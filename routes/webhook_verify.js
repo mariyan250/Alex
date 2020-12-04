@@ -26,7 +26,7 @@ module.exports = function (app, chalk) {
             // processPostback(event);
           } else if (event.message) {
             console.log(event.message);
-            // processMessage(event);
+            processMessage(event);
           }
         });
       });
