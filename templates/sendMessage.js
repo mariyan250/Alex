@@ -4,7 +4,7 @@ module.exports = function sendMessage(recipientId, message) {
   return new Promise(function (resolve, reject) {
     request(
       {
-        url: 'https://graph.facebook.com/v2.6/me/messages',
+        url: 'https://graph.facebook.com/v9.0/me/messages',
         qs: {
           access_token: process.env.PAGE_ACCESS_TOKEN,
         },
