@@ -7,6 +7,6 @@ module.exports = function processMessage(event) {
     const senderID = event.sender.id;
     console.log('Received message from senderId: ' + senderID);
     console.log('Message is: ' + JSON.stringify(message.text));
-    sendMessage(senderId, 'Fuck you!');
+    sendMessage(senderID, 'Fuck you!');
   }
 };
