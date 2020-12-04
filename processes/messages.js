@@ -1,7 +1,5 @@
 const request = require('request');
-const senderAction = require('../templates/senderAction');
 const sendMessage = require('../templates/sendMessage');
-const sendGenericTemplate = require('../templates/sendGenericTemplate');
 
 module.exports = function processMessage(event) {
   if (!event.message.is_echo) {
@@ -10,6 +8,7 @@ module.exports = function processMessage(event) {
     console.log('Received message from senderId: ' + senderID);
     console.log('Message is: ' + JSON.stringify(message));
     if (message.text === 'Hey') {
+      console.log('Messageeeeeeeeeee ' + message.text);
       sendMessage(senderID, 'Hello, Mariyan!');
     }
   }

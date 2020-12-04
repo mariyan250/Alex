@@ -1,5 +1,6 @@
 const processPostback = require('../processes/postback');
 const processMessage = require('../processes/messages');
+const sendMesasge = require('../templates/sendMessage');
 
 module.exports = function (app, chalk) {
   app.get('/webhook', function (req, res) {
@@ -20,12 +21,11 @@ module.exports = function (app, chalk) {
       req.body.entry.forEach(function (entry) {
         // Iterate over each messaging event
         entry.messaging.forEach(function (event) {
-          console.log(event);
+          const sender = event.senderID;
+
           if (event.postback) {
-            console.log(event.postback);
-            // processPostback(event);
+            processPostback(event);
           } else if (event.message) {
-            console.log(event.message);
             processMessage(event);
           }
         });
