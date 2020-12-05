@@ -28,9 +28,7 @@ const determineMessage = ({ text }) => {
   if (checkDictionary(dictionary.requests.weather, text)) {
     let message;
 
-    getWeather('Rudozem').then((weatherData) => {
-      console.log(weatherData);
-
+    getWeather('Рудозем').then((weatherData) => {
       if (weatherData.error) {
         message = `${getRandom(
           dictionary.responses.problems.weather

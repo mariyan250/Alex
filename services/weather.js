@@ -1,9 +1,7 @@
 import fetch from 'node-fetch';
 
 export const getWeather = async (city) => {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&lang=bg&units=metrics`;
-
-  console.log(url);
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&lang=bg&units=metric`;
 
   try {
     const response = await fetch(url);
