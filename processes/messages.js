@@ -12,7 +12,7 @@ import {
 
 import dictionary from '../dictionary.js';
 
-const determineMessage = ({ text }) => {
+const determineMessage = async ({ text }) => {
   // Words
   if (checkDictionary(dictionary.greetings, text))
     return `${getRandom(dictionary.responses.greetings)} ${getRandom(
@@ -26,7 +26,7 @@ const determineMessage = ({ text }) => {
 
   // Weather
   if (checkDictionary(dictionary.requests.weather, text)) {
-    const weatherData = getWeather('Rudozem');
+    const weatherData = await getWeather('Rudozem');
 
     if (weatherData.error)
       return `${getRandom(dictionary.responses.problems.weather)} ${getRandom(
