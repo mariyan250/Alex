@@ -13,6 +13,6 @@ export const getWeather = async (city) => {
 
     return { temp, feels_like, weather };
   } catch (error) {
-    return { error };
+    return { error: true };
   }
 };

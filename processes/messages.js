@@ -29,15 +29,7 @@ const determineMessage = ({ text }) => {
     let message;
 
     getWeather('Рудозем').then((weatherData) => {
-      if (weatherData.error) {
-        message = `${getRandom(
-          dictionary.responses.problems.weather
-        )} ${getRandom(dictionary.emoticons.problem)}`;
-      } else {
-        console.log(weatherData);
-        message = parseWeather(weatherData);
-        console.log(message);
-      }
+      message = parseWeather(weatherData);
     });
 
     return message;
