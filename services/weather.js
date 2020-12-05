@@ -5,6 +5,7 @@ export const getWeather = async (city) => {
 
   try {
     const data = await fetch(url);
+    console.log(data);
 
     const temp = Math.floor(data.main.temp);
     const feels_like = Math.floor(data.main.feels_like);
