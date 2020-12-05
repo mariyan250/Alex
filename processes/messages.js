@@ -28,7 +28,7 @@ const determineMessage = ({ text }) => {
   if (checkDictionary(dictionary.requests.weather, text)) {
     let message;
 
-    getWeather('Рудозем').then((weatherData) => {
+    getWeather('Rudozem').then((weatherData) => {
       message = parseWeather(weatherData);
     });
 
