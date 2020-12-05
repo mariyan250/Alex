@@ -14,6 +14,7 @@ export const parseWeather = ({ temp, feels_like, weather }) => {
 
   switch (weather) {
     case 'Fog':
+    case 'Mist':
       weatherState = 'mъгливо';
       icon = dictionary.emoticons.weather.fog;
       break;

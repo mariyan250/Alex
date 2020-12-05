@@ -30,6 +30,7 @@ const determineMessage = ({ text }) => {
       console.log(data);
       const msg = parseWeather(data);
       console.log(msg);
+      return msg;
     });
   }
 
