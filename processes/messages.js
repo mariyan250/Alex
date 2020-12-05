@@ -1,3 +1,5 @@
+import wiki from 'wikijs';
+
 import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
 
@@ -32,6 +34,14 @@ const determineMessage = async ({ text }) => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  if (text === 'Test') {
+    console.log(
+      wiki()
+        .find('Elon Must')
+        .then((page) => page.title)
+    );
   }
 
   return getRandom(dictionary.responses.problems.understand);
