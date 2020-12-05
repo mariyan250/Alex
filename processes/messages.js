@@ -1,8 +1,7 @@
-const sendMessage = require('../templates/sendMessage');
-const senderAction = require('../templates/senderAction');
+import { sendMessage } from '../templates/sendMessage.js';
+import { sendAction } from '../templates/sendAction.js';
 
-const dictionary = require('../dictionary.json');
-
+import dictionary from '../dictionary.json';
 const checkDictionary = (dictionary, text) => {
   return dictionary.find((word) => text.toLowerCase().includes(word));
 };
@@ -18,12 +17,12 @@ const determineMessage = ({ text }) => {
   return `I don't understand you!`;
 };
 
-module.exports = async (event) => {
+export const processMessage = async (event) => {
   if (!event.message.is_echo) {
     const message = event.message;
     const senderID = event.sender.id;
-    await senderAction(senderID, 'mark_seen');
-    await senderAction(senderID, 'typing_on');
+    await sendAction(senderID, 'mark_seen');
+    await sendAction(senderID, 'typing_on');
     await sendMessage(senderID, determineMessage(message));
   }
 };

@@ -1,7 +1,7 @@
-const fetch = require('node-fetch');
-const url = require('../constants/url');
+import fetch from 'node-fetch';
+import { url } from '../constants/url.js';
 
-module.exports = async (recipientId, senderAction) => {
+export const sendAction = async (recipientId, senderAction) => {
   try {
     await fetch(url, {
       method: 'POST',
