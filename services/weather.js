@@ -3,10 +3,6 @@ import fetch from 'node-fetch';
 export const getWeather = (city) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&lang=bg&units=metric`;
 
-  console.log(url);
-
-  let temp, feels_like, weather;
-
   return fetch(url)
     .then((res) => res.json())
     .then((data) => {
