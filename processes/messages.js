@@ -28,7 +28,8 @@ const determineMessage = ({ text }) => {
   if (checkDictionary(dictionary.requests.weather, text)) {
     return getWeather('Rudozem').then((data) => {
       console.log(data);
-      parseWeather(data);
+      const msg = parseWeather(data);
+      console.log(msg);
     });
   }
 
