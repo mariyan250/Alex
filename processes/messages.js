@@ -1,7 +1,6 @@
-const request = require('request');
 const sendMessage = require('../templates/sendMessage');
 
-module.exports = function processMessage(event) {
+module.exports = (event) => {
   if (!event.message.is_echo) {
     const message = event.message;
     const senderID = event.sender.id;

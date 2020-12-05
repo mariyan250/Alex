@@ -1,25 +1,20 @@
 const processPostback = require('../processes/postback');
 const processMessage = require('../processes/messages');
-const sendMesasge = require('../templates/sendMessage');
 
-module.exports = function (app, chalk) {
+module.exports = (app) => {
   app.get('/webhook', function (req, res) {
     if (req.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
-      console.log('webhook verified');
+      console.log('Webhook Verified');
       res.status(200).send(req.query['hub.challenge']);
     } else {
-      console.error('verification failed. Token mismatch.');
+      console.error('Verification failed. Token mismatch.');
       res.sendStatus(403);
     }
   });
 
   app.post('/webhook', function (req, res) {
-    //checking for page subscription.
     if (req.body.object === 'page') {
-      /* Iterate over each entry, there can be multiple entries 
-       if callbacks are batched. */
       req.body.entry.forEach(function (entry) {
-        // Iterate over each messaging event
         entry.messaging.forEach(function (event) {
           if (event.postback) {
             processPostback(event);

@@ -1,27 +1,24 @@
-const request = require('request');
+const url = require('../constants/url');
 
-module.exports = function sendMessage(recipientId, message) {
-  return new Promise(function (resolve, reject) {
-    request(
-      {
-        url: 'https://graph.facebook.com/v9.0/me/messages',
-        qs: {
-          access_token: process.env.PAGE_ACCESS_TOKEN,
-        },
-        method: 'POST',
-        json: {
-          recipient: { id: recipientId },
-          message: message,
-        },
+module.exports = async (recipientId, message) => {
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      function (error, response, body) {
-        if (error) {
-          console.log('Error sending message: ' + response.error);
-          reject(response.error);
-        } else {
-          resolve(body);
-        }
-      }
-    );
-  });
+      body: JSON.stringify({
+        recipient: {
+          id: recipientId,
+        },
+        message: {
+          text: message,
+        },
+      }),
+    });
+
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
 };
