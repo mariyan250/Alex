@@ -1,4 +1,4 @@
-import { getRandomMessage } from '../utils/functions.js';
+import { getRandom } from '../utils/functions.js';
 import dictionary from '../dictionary.js';
 
 export const getTime = () => {
@@ -7,7 +7,7 @@ export const getTime = () => {
     minute: '2-digit',
   });
 
-  return `${getRandomMessage(
-    dictionary.responses.time
-  )} ${time} ${getRandomMessage(dictionary.emoticons.time)}.`;
+  return `${getRandom(dictionary.responses.time)} ${time} ${getRandom(
+    dictionary.emoticons.time
+  )}.`;
 };
