@@ -9,5 +9,5 @@ export const getTime = () => {
 
   return `${getRandom(dictionary.responses.time)} ${time} ${getRandom(
     dictionary.emoticons.time
-  )}.`;
+  )}`;
 };

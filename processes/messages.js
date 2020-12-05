@@ -2,22 +2,41 @@ import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
 
 import { getTime } from '../services/time.js';
+import { getWeather } from '../services/weather.js';
 
-import { getRandom, checkDictionary } from '../utils/functions.js';
+import {
+  getRandom,
+  checkDictionary,
+  parseWeather,
+} from '../utils/functions.js';
 
 import dictionary from '../dictionary.js';
 
 const determineMessage = ({ text }) => {
+  // Words
   if (checkDictionary(dictionary.greetings, text))
     return `${getRandom(dictionary.responses.greetings)} ${getRandom(
       dictionary.emoticons.greetings
     )}`;
 
+  // Тime
   if (checkDictionary(dictionary.requests.time, text)) {
     return getTime();
   }
 
-  return getRandom(dictionary.responses.problem);
+  // Weather
+  if (checkDictionary(dictionary.requests.weather, text)) {
+    const weatherData = getWeather('Rudozem');
+
+    if (weatherData.error)
+      return `${getRandom(dictionary.responses.problems.weather)} ${getRandom(
+        dictionary.emoticons.problem
+      )}`;
+
+    return parseWeather(weatherData);
+  }
+
+  return getRandom(dictionary.responses.problems.understand);
 };
 
 export const processMessage = async (event) => {
