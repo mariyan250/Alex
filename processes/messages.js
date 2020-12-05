@@ -34,6 +34,7 @@ const determineMessage = ({ text }) => {
           dictionary.responses.problems.weather
         )} ${getRandom(dictionary.emoticons.problem)}`;
       } else {
+        console.log(weatherData);
         message = parseWeather(weatherData);
         console.log(message);
       }
