@@ -29,6 +29,8 @@ const determineMessage = ({ text }) => {
     let message;
 
     getWeather('Rudozem').then((weatherData) => {
+      console.log(weatherData);
+
       if (weatherData.error)
         message = `${getRandom(
           dictionary.responses.problems.weather
