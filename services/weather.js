@@ -10,9 +10,13 @@ export const getWeather = async (city) => {
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      temp = Math.floor(data.main.temp);
-      feels_like = Math.floor(data.main.feels_like);
-      weather = data.weather[0].main;
+      // temp = Math.floor(data.main.temp);
+      // feels_like = Math.floor(data.main.feels_like);
+      // weather = data.weather[0].main;
+
+      temp = 20;
+      feels_like = 10;
+      weather = 'Fog';
     })
     .catch((error) => console.log(error));
 
