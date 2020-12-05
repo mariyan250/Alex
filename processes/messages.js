@@ -15,6 +15,6 @@ module.exports = (event) => {
     const message = event.message;
     const senderID = event.sender.id;
     senderAction(senderID);
-    determineMessage(message);
+    sendMessage(senderID, determineMessage(message));
   }
 };
