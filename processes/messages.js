@@ -1,10 +1,9 @@
-import wiki from 'wikijs';
-
 import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
 
 import { getTime } from '../services/time.js';
 import { getWeather } from '../services/weather.js';
+import { getWikipedia } from '../services/wikipedia.js';
 
 import {
   getRandom,
@@ -28,18 +27,14 @@ const determineMessage = async ({ text }) => {
 
   // Weather
   if (checkDictionary(dictionary.requests.weather, text)) {
-    try {
-      const data = await getWeather('Rudozem');
-      return parseWeather(data);
-    } catch (error) {
-      console.log(error);
-    }
+    const data = await getWeather('Rudozem');
+    return parseWeather(data);
   }
 
   if (text === 'Test') {
-    console
-      .log(wiki.find('Elon Must').then((page) => page.title))
-      .catch((error) => console.log(error));
+    const data = await getWikipedia('Elon must');
+    console.log(data);
+    return data;
   }
 
   return getRandom(dictionary.responses.problems.understand);
