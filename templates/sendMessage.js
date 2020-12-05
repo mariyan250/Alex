@@ -1,3 +1,4 @@
+const fetch = require('node-fetch');
 const url = require('../constants/url');
 
 module.exports = async (recipientId, message) => {
