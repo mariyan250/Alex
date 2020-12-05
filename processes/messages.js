@@ -1,7 +1,7 @@
 import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
 
-import dictionary from ('../dictionary.json');
+import dictionary from '../dictionary.js';
 
 const checkDictionary = (dictionary, text) => {
   return dictionary.find((word) => text.toLowerCase().includes(word));
