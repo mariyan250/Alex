@@ -12,32 +12,25 @@ import {
 
 import dictionary from '../dictionary.js';
 
-const determineMessage = ({ text }) => {
-  let message;
-
+const determineMessage = async ({ text }) => {
   // Words
   if (checkDictionary(dictionary.greetings, text))
-    message = `${getRandom(dictionary.responses.greetings)} ${getRandom(
+    return `${getRandom(dictionary.responses.greetings)} ${getRandom(
       dictionary.emoticons.greetings
     )}`;
 
   // Тime
   if (checkDictionary(dictionary.requests.time, text)) {
-    message = getTime();
+    return getTime();
   }
 
   // Weather
   if (checkDictionary(dictionary.requests.weather, text)) {
-    getWeather('Rudozem').then((data) => {
-      message = parseWeather(data);
-    });
+    const data = await getWeather('Rudozem');
+    return parseWeather(data);
   }
 
-  if (message) {
-    return message;
-  } else {
-    return getRandom(dictionary.responses.problems.understand);
-  }
+  return getRandom(dictionary.responses.problems.understand);
 };
 
 export const processMessage = async (event) => {
@@ -46,6 +39,6 @@ export const processMessage = async (event) => {
     const senderID = event.sender.id;
     await sendAction(senderID, 'mark_seen');
     await sendAction(senderID, 'typing_on');
-    await sendMessage(senderID, determineMessage(message));
+    await sendMessage(senderID, await determineMessage(message));
   }
 };
