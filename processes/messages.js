@@ -29,7 +29,9 @@ const determineMessage = ({ text }) => {
     let message;
 
     getWeather('Рудозем').then((weatherData) => {
+      console.log(weatherData);
       message = parseWeather(weatherData);
+      console.log(message);
     });
 
     return message;
