@@ -31,12 +31,13 @@ const determineMessage = ({ text }) => {
     getWeather('Rudozem').then((weatherData) => {
       console.log(weatherData);
 
-      if (weatherData.error)
+      if (weatherData.error) {
         message = `${getRandom(
           dictionary.responses.problems.weather
         )} ${getRandom(dictionary.emoticons.problem)}`;
-
-      message = parseWeather(weatherData);
+      } else {
+        message = parseWeather(weatherData);
+      }
     });
 
     return message;
