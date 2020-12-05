@@ -1,6 +1,8 @@
 import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
 
+import { getTime } from '../services/time.js';
+
 import { getRandomMessage, checkDictionary } from '../utils/functions.js';
 
 import dictionary from '../dictionary.js';
@@ -10,10 +12,7 @@ const determineMessage = ({ text }) => {
     return getRandomMessage(dictionary.responses.greetings);
 
   if (checkDictionary(dictionary.requests.time, text)) {
-    return `Часът е ${new Date().toLocaleTimeString([], {
-      hour: '2-digit',
-      minute: '2-digit',
-    })} ⌚️`;
+    return getTime();
   }
 
   return getRandomMessage(dictionary.responses.problem);
