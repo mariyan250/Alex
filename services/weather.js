@@ -7,11 +7,12 @@ export const getWeather = async (city) => {
     const response = await fetch(url);
     const data = await response.json();
 
+    console.log(data);
+
     const temp = Math.floor(data.main.temp);
     const feels_like = Math.floor(data.main.feels_like);
     const weather = data.weather[0].main;
 
-    console.log({ temp, feels_like, weather });
     return { temp, feels_like, weather };
   } catch (error) {
     return { error: true };
