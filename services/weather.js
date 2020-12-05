@@ -7,16 +7,12 @@ export const getWeather = (city) => {
 
   let temp, feels_like, weather;
 
-  fetch(url)
+  return fetch(url)
     .then((res) => res.json())
     .then((data) => {
-      // temp = Math.floor(data.main.temp);
-      // feels_like = Math.floor(data.main.feels_like);
-      // weather = data.weather[0].main;
-
-      temp = 20;
-      feels_like = 10;
-      weather = 'Fog';
+      const temp = Math.floor(data.main.temp);
+      const feels_like = Math.floor(data.main.feels_like);
+      const weather = data.weather[0].main;
 
       return { temp, feels_like, weather };
     })
