@@ -13,28 +13,31 @@ import {
 import dictionary from '../dictionary.js';
 
 const determineMessage = ({ text }) => {
+  let message;
+
   // Words
   if (checkDictionary(dictionary.greetings, text))
-    return `${getRandom(dictionary.responses.greetings)} ${getRandom(
+    message = `${getRandom(dictionary.responses.greetings)} ${getRandom(
       dictionary.emoticons.greetings
     )}`;
 
   // Тime
   if (checkDictionary(dictionary.requests.time, text)) {
-    return getTime();
+    message = getTime();
   }
 
   // Weather
   if (checkDictionary(dictionary.requests.weather, text)) {
-    return getWeather('Rudozem').then((data) => {
-      console.log(data);
-      const msg = parseWeather(data);
-      console.log(msg);
-      return msg;
+    getWeather('Rudozem').then((data) => {
+      message = parseWeather(data);
     });
   }
 
-  return getRandom(dictionary.responses.problems.understand);
+  if (message) {
+    return message;
+  } else {
+    return getRandom(dictionary.responses.problems.understand);
+  }
 };
 
 export const processMessage = async (event) => {
