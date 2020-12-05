@@ -3,8 +3,8 @@ const senderAction = require('../templates/senderAction');
 
 const dictionary = require('../dictionary.json');
 
-const determineMessage = (message) => {
-  const message = message.text.toLowerCase();
+const determineMessage = ({ text }) => {
+  const message = text.toLowerCase();
   if (dictionary.greetings.includes(message)) {
     return 'Hello!';
   }
