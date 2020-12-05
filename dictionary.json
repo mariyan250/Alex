@@ -1,3 +1,6 @@
 {
-  "greetings": ["hey", "hello", "hi"]
+  "greetings": ["hey", "hello", "hi"],
+  "responses": {
+    "greetings": ["Hello!", "Hey!", "Hi"]
+  }
 }
