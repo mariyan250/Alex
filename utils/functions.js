@@ -9,8 +9,8 @@ export const getRandom = (dictionary) => {
 };
 
 export const parseWeather = ({ temp, feels_like, weather }) => {
-  const weatherState;
-  const icon;
+  let weatherState;
+  let icon;
 
   switch (weather) {
     case 'Fog':
