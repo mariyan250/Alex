@@ -5,9 +5,12 @@ const dictionary = require('../dictionary.json');
 
 const determineMessage = ({ text }) => {
   const message = text.toLowerCase();
+
   if (dictionary.greetings.includes(message)) {
     return 'Hello!';
   }
+
+  return `I don't understand you!`;
 };
 
 module.exports = async (event) => {
