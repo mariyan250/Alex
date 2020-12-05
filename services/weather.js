@@ -17,9 +17,8 @@ export const getWeather = (city) => {
       temp = 20;
       feels_like = 10;
       weather = 'Fog';
+
+      return { temp, feels_like, weather };
     })
     .catch((error) => console.log(error));
-
-  console.log(temp, feels_like, weather);
-  return { temp, feels_like, weather };
 };
