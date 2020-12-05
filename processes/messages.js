@@ -26,8 +26,12 @@ const determineMessage = async ({ text }) => {
 
   // Weather
   if (checkDictionary(dictionary.requests.weather, text)) {
-    const data = await getWeather('Rudozem');
-    return parseWeather(data);
+    try {
+      const data = await getWeather('Rudozem');
+      return parseWeather(data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return getRandom(dictionary.responses.problems.understand);
