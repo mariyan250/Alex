@@ -15,8 +15,8 @@ const determineMessage = (message) => {
 module.exports = (event) => {
   if (!event.message.is_echo) {
     const message = event.message;
+    console.log(message);
     const senderID = event.sender.id;
     senderAction(senderID);
-    sendMessage(senderID, determineMessage(message));
   }
 };
