@@ -37,11 +37,9 @@ const determineMessage = async ({ text }) => {
   }
 
   if (text === 'Test') {
-    console.log(
-      wiki()
-        .find('Elon Must')
-        .then((page) => page.title)
-    );
+    console
+      .log(wiki.find('Elon Must').then((page) => page.title))
+      .catch((error) => console.log(error));
   }
 
   return getRandom(dictionary.responses.problems.understand);
