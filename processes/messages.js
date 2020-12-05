@@ -22,7 +22,8 @@ module.exports = async (event) => {
   if (!event.message.is_echo) {
     const message = event.message;
     const senderID = event.sender.id;
-    await senderAction(senderID);
+    await senderAction(senderID, 'mark_seen');
+    await senderAction(senderID, 'typing_on');
     await sendMessage(senderID, determineMessage(message));
   }
 };

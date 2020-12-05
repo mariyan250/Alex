@@ -1,7 +1,7 @@
 const fetch = require('node-fetch');
 const url = require('../constants/url');
 
-module.exports = async (recipientId) => {
+module.exports = async (recipientId, senderAction) => {
   try {
     await fetch(url, {
       method: 'POST',
@@ -10,18 +10,7 @@ module.exports = async (recipientId) => {
       },
       body: JSON.stringify({
         recipient: { id: recipientId },
-        sender_action: 'mark_seen',
-      }),
-    });
-
-    await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        recipient: { id: recipientId },
-        sender_action: 'typing_on',
+        sender_action: senderAction,
       }),
     });
   } catch (error) {
