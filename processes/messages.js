@@ -10,11 +10,11 @@ const determineMessage = (message) => {
   }
 };
 
-module.exports = (event) => {
+module.exports = async (event) => {
   if (!event.message.is_echo) {
     const message = event.message;
     const senderID = event.sender.id;
-    senderAction(senderID);
-    sendMessage(senderID, determineMessage(message));
+    await senderAction(senderID);
+    await sendMessage(senderID, determineMessage(message));
   }
 };
