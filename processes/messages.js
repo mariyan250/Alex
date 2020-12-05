@@ -8,6 +8,14 @@ import dictionary from '../dictionary.js';
 const determineMessage = ({ text }) => {
   if (checkDictionary(dictionary.greetings, text))
     return getRandomMessage(dictionary.responses.greetings);
+
+  if (checkDictionary(dictionary.requests.time, text)) {
+    return `Часът е ${new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    })}`;
+  }
+
   return getRandomMessage(dictionary.responses.problem);
 };
 
