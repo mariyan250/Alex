@@ -1,15 +1,13 @@
 const sendMessage = require('../templates/sendMessage');
 const senderAction = require('../templates/senderAction');
 
-const determineMessage = (message) => {
-  switch (message.text.toLowerCase()) {
-    case 'hey':
-    case 'hi':
-    case 'hello':
-      return 'Hello, sir!';
+const dictionary = require('../dictionary.json');
 
-    default:
-      return `Sorry, I don't understand you!`;
+const determineMessage = (message) => {
+  const message = message.toLowerCase();
+
+  if (dictionary.greetings.includes(message)) {
+    return 'Hello!';
   }
 };
 
