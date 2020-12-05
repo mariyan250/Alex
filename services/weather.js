@@ -3,18 +3,15 @@ import fetch from 'node-fetch';
 export const getWeather = async (city) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&lang=bg&units=metric`;
 
-  try {
-    const response = await fetch(url);
-    const data = await response.json();
+  let temp, feels_like, weather;
 
-    console.log(data);
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      temp = Math.floor(data.main.temp);
+      feels_like = Math.floor(data.main.feels_like);
+      weather = data.weather[0].main;
+    });
 
-    const temp = Math.floor(data.main.temp);
-    const feels_like = Math.floor(data.main.feels_like);
-    const weather = data.weather[0].main;
-
-    return { temp, feels_like, weather };
-  } catch (error) {
-    return { error: true };
-  }
+  return { temp, feels_like, weather };
 };
