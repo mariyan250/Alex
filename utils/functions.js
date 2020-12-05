@@ -35,6 +35,5 @@ export const parseWeather = ({ temp, feels_like, weather }) => {
       break;
   }
 
-  return `Времето е ${weatherState} ${icon},
-  tемпературата е ${temp}, градуса и се усеща като ${feels_like} 🌡.`;
+  return `Времето е ${weatherState} ${icon}\nТемпературата е ${temp}, градуса и се усеща като ${feels_like} 🌡.`;
 };
