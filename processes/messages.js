@@ -4,11 +4,7 @@ const senderAction = require('../templates/senderAction');
 const dictionary = require('../dictionary.json');
 
 const checkDictionary = (dictionary, text) => {
-  dictionary.forEach((word) => {
-    if (text.toLowerCase().includes(word)) {
-      return true;
-    }
-  });
+  return dictionary.find((word) => text.toLowerCase().includes(word));
 };
 
 const getRandomMessage = (dictionary) => {
@@ -19,7 +15,6 @@ const determineMessage = ({ text }) => {
   if (checkDictionary(dictionary.greetings, text)) {
     return getRandomMessage(dictionary.responses.greetings);
   }
-
   return `I don't understand you!`;
 };
 
