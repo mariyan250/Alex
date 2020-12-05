@@ -35,6 +35,7 @@ const determineMessage = ({ text }) => {
         )} ${getRandom(dictionary.emoticons.problem)}`;
       } else {
         message = parseWeather(weatherData);
+        console.log(message);
       }
     });
 
