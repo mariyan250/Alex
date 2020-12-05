@@ -1,9 +1,10 @@
 const sendMessage = require('../templates/sendMessage');
 const senderAction = require('../templates/senderAction');
 
-const determineMessage = (msg) => {
-  const message = msg.toLowerCase();
-  switch (message) {
+const determineMessage = (message) => {
+  const msg = message.toLowerCase();
+  console.log(msg);
+  switch (msg) {
     case 'hey':
     case 'hi':
     case 'hello':
