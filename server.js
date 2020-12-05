@@ -1,5 +1,5 @@
 import express from 'express';
-import { setRoute } from './routes/webhook_verify.js';
+import { setRoute } from './routes/webhook.js';
 
 const app = express();
 

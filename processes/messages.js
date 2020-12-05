@@ -1,20 +1,14 @@
 import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
 
+import { getRandomMessage, checkDictionary } from '../utils/functions.js';
+
 import dictionary from '../dictionary.js';
-
-const checkDictionary = (dictionary, text) => {
-  return dictionary.find((word) => text.toLowerCase().includes(word));
-};
-
-const getRandomMessage = (dictionary) => {
-  return dictionary[Math.floor(Math.random() * dictionary.length)];
-};
 
 const determineMessage = ({ text }) => {
   if (checkDictionary(dictionary.greetings, text))
     return getRandomMessage(dictionary.responses.greetings);
-  return `I don't understand you!`;
+  return getRandomMessage(dictionary.responses.problem);
 };
 
 export const processMessage = async (event) => {
