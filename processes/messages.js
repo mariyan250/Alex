@@ -7,6 +7,9 @@ const determineMessage = (message) => {
     case 'hi':
     case 'hello':
       return 'Hello, sir!';
+
+    default:
+      return `Sorry, I don't understand you!`;
   }
 };
 
