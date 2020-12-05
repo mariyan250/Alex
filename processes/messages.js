@@ -31,11 +31,7 @@ const determineMessage = async ({ text }) => {
     return parseWeather(data);
   }
 
-  if (
-    text.toLowerCase().includes('search') ||
-    text.toLowerCase().includes('какво е') ||
-    text.toLowerCase().includes('кой е')
-  ) {
+  if (text.toLowerCase().includes('search')) {
     const data = await getWikipedia(text);
     console.log(data);
     return data;
