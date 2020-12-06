@@ -2,7 +2,7 @@ import { url } from '../constants/url.js';
 
 export const sendButton = async (senderID) => {
   try {
-    const response = await fetch(url, {
+    await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -29,8 +29,6 @@ export const sendButton = async (senderID) => {
         },
       }),
     });
-
-    console.log(await response.json());
   } catch (error) {
     console.log(error);
   }

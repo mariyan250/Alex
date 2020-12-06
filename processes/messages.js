@@ -34,7 +34,7 @@ const determineMessage = async ({ text }, senderID) => {
 
   // Wikipedia searching
   if (text.toLowerCase().includes('search')) {
-    await sendButton(senderID);
+    return await sendButton(senderID);
   }
 
   return getRandom(dictionary.responses.problems.understand);
