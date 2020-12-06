@@ -40,14 +40,29 @@ bot.listen(/send payload/g, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendButton('Избери опция', [
+    { type: 'postback', title: 'Здравей! ☀️', payload: 'GET_GREETING' },
     { type: 'postback', title: 'Какво е времето? ☀️', payload: 'GET_WEATHER' },
   ]);
 });
 
 bot.on('postback', async (event, chat) => {
+  await chat.sendAction('mark_seen');
+  await chat.sendAction('typing_on');
+
   if (event.postback.payload === 'GET_WEATHER') {
-    await chat.sendAction('mark_seen');
-    await chat.sendAction('typing_on');
     await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
+  } else if (event.postback.payload === 'GET_GREETING') {
+    await chat.sendMessage(
+      `${getRandom(dictionary.responses.greetings)} ${getRandom(
+        dictionary.emoticons.greetings
+      )}`
+    );
   }
+
+  await chat.sendAction('typing_on');
+
+  await chat.sendButton('Избери опция', [
+    { type: 'postback', title: 'Здравей! ☀️', payload: 'GET_GREETING' },
+    { type: 'postback', title: 'Какво е времето? ☀️', payload: 'GET_WEATHER' },
+  ]);
 });
