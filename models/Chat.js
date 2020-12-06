@@ -1,6 +1,13 @@
 import fetch from 'node-fetch';
 
 export class Chat {
+  postHeader = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
   constructor(url) {
     this.URL = url;
   }
@@ -8,17 +15,10 @@ export class Chat {
   async sendMessage(senderID, message) {
     try {
       await fetch(this.URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        ...this.postHeader,
         body: JSON.stringify({
-          recipient: {
-            id: senderID,
-          },
-          message: {
-            text: message,
-          },
+          recipient: { id: senderID },
+          message: { text: message },
         }),
       });
     } catch (error) {
@@ -29,10 +29,7 @@ export class Chat {
   async sendAction(senderID, senderAction) {
     try {
       await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        ...this.postHeader,
         body: JSON.stringify({
           recipient: { id: senderID },
           sender_action: senderAction,
