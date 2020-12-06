@@ -14,7 +14,7 @@ import {
 
 import dictionary from '../dictionary.js';
 
-const determineMessage = async ({ text }) => {
+const determineMessage = async ({ text }, senderID) => {
   // Words
   if (checkDictionary(dictionary.greetings, text))
     return `${getRandom(dictionary.responses.greetings)} ${getRandom(
@@ -34,10 +34,7 @@ const determineMessage = async ({ text }) => {
 
   // Wikipedia searching
   if (text.toLowerCase().includes('search')) {
-    const data = await getWikipedia(text);
-    await sendButton();
-    console.log(data);
-    return data;
+    await sendButton(senderID);
   }
 
   return getRandom(dictionary.responses.problems.understand);
@@ -49,6 +46,6 @@ export const processMessage = async (event) => {
     const senderID = event.sender.id;
     await sendAction(senderID, 'mark_seen');
     await sendAction(senderID, 'typing_on');
-    await sendMessage(senderID, await determineMessage(message));
+    await sendMessage(senderID, await determineMessage(message, senderID));
   }
 };
