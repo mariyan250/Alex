@@ -1,6 +1,4 @@
 import fetch from 'node-fetch';
-
-import fetch from 'node-fetch';
 import { url } from '../constants/url.js';
 
 export const processPostback = async (event) => {
