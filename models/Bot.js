@@ -1,19 +1,26 @@
 import express from 'express';
+
 import Emitter from 'events';
 
 import { Chat } from './Chat.js';
 
 export class Bot extends Emitter {
   constructor(options) {
-    if (!options.VERIFY_TOKEN || !options.PAGE_ACCESS_TOKEN || !options.PORT)
-      throw new Error('Please specify options and port to start on..');
+    if (
+      !options.VERIFY_TOKEN ||
+      !options.PAGE_ACCESS_TOKEN ||
+      !options.PORT ||
+      !options.URL
+    )
+      throw new Error('Please specify options, url and port to start on..');
 
     super();
 
     this.VERIFY_TOKEN = options.VERIFY_TOKEN;
     this.PAGE_ACCESS_TOKEN = options.PAGE_ACCESS_TOKEN;
     this.PORT = options.PORT;
-    this.chat = new Chat();
+
+    this.chat = new Chat(options.REQUEST_URL);
 
     this.initApp();
   }

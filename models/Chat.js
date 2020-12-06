@@ -1,9 +1,13 @@
 import fetch from 'node-fetch';
 
 export class Chat {
+  constructor(url) {
+    this.URL = url;
+  }
+
   async sendMessage(recipientId, message) {
     try {
-      await fetch(url, {
+      await fetch(this.URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
