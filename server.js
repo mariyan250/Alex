@@ -41,3 +41,7 @@ bot.listen(/send payload/g, async (event, chat) => {
   await chat.sendAction('typing_on');
   await chat.sendButton('Какво е времето?', 'GET_WEATHER');
 });
+
+bot.on('postback', (event, chat) => {
+  console.log(event.postback);
+});
