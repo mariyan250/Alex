@@ -35,6 +35,7 @@ export class Bot extends Emitter {
       if (req.body.object === 'page') {
         req.body.entry.forEach((entry) => {
           entry.messaging.forEach((event) => {
+            this.chat.senderID = event.sender.id;
             if (event.message) this.emit('message', event, this.chat);
             if (event.postback) this.emit('postback', event, this.chat);
             if (event.attachment) this.emit('attachment', event, this.chat);

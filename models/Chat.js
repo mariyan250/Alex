@@ -11,12 +11,20 @@ export class Chat {
     };
   }
 
-  async sendMessage(senderID, message) {
+  get senderID() {
+    return this._senderID;
+  }
+
+  set senderID(id) {
+    this._senderID = id;
+  }
+
+  async sendMessage(message) {
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
         body: JSON.stringify({
-          recipient: { id: senderID },
+          recipient: { id: this.senderID },
           message: { text: message },
         }),
       });
@@ -25,12 +33,12 @@ export class Chat {
     }
   }
 
-  async sendAction(senderID, senderAction) {
+  async sendAction(senderAction) {
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
         body: JSON.stringify({
-          recipient: { id: senderID },
+          recipient: { id: this.senderID },
           sender_action: senderAction,
         }),
       });
