@@ -11,6 +11,7 @@ const bot = new Bot({
   URL,
 });
 
+// Greetings
 bot.hear(dictionary.greetings, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
@@ -21,14 +22,20 @@ bot.hear(dictionary.greetings, async (event, chat) => {
   );
 });
 
+// Weather
 bot.hear(dictionary.requests.weather, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
 });
 
+// Wikipedia
 bot.hear('search', async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await getWikipedia('Elon Musk!');
+});
+
+bot.hear(/search/g, (event, chat) => {
+  console.log(event.message.text);
 });
