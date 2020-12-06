@@ -47,16 +47,28 @@ export class Chat {
     }
   }
 
-  async sendPostback(title) {
+  async sendButton(title) {
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
         body: JSON.stringify({
           recipient: { id: this.senderID },
           sender: { id: this.senderID },
-          postback: {
-            title,
-            payload: title,
+          message: {
+            attachment: {
+              type: 'template',
+              payload: {
+                template_type: 'button',
+                text: title,
+                buttons: [
+                  {
+                    type: 'web_url',
+                    url: 'https://www.messenger.com',
+                    title: 'Visit Messenger',
+                  },
+                ],
+              },
+            },
           },
         }),
       });
