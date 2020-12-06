@@ -5,6 +5,8 @@ export default class Bot extends Emitter {
   app = express();
 
   constructor(options) {
+    super();
+
     if (!options.verifyToken || !options.pageAccessToken || !options.port)
       throw new Error('Please specify options and port to start on..');
 
