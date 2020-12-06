@@ -50,7 +50,7 @@ export class Chat {
   async sendPostback(title) {
     try {
       await fetch(this.URL, {
-        ...history.requestConfig,
+        ...this.requestConfig,
         body: JSON.stringify({
           recipient: { id: this.senderID },
           sender: { id: this.senderID },
