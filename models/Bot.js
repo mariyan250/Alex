@@ -1,7 +1,9 @@
 import express from 'express';
 import Emitter from 'events';
 
-export default class Bot extends Emitter {
+import { Chat } from './Chat.js';
+
+export class Bot extends Emitter {
   constructor(options) {
     if (!options.VERIFY_TOKEN || !options.PAGE_ACCESS_TOKEN || !options.PORT)
       throw new Error('Please specify options and port to start on..');
@@ -11,6 +13,7 @@ export default class Bot extends Emitter {
     this.VERIFY_TOKEN = options.VERIFY_TOKEN;
     this.PAGE_ACCESS_TOKEN = options.PAGE_ACCESS_TOKEN;
     this.PORT = options.PORT;
+    this.chat = new Chat();
 
     this.initApp();
   }
@@ -35,9 +38,11 @@ export default class Bot extends Emitter {
       if (req.body.object === 'page') {
         req.body.entry.forEach((entry) => {
           entry.messaging.forEach((event) => {
-            if (event.message) this.emit('message', event.message);
-            if (event.postback) this.emit('postback', event.postback);
-            if (event.attachment) this.emit('attachment', event.attachment);
+            if (event.message) this.emit('message', event.message, this.chat);
+            if (event.postback)
+              this.emit('postback', event.postback, this.chat);
+            if (event.attachment)
+              this.emit('attachment', event.attachment, this.chat);
           });
         });
         res.sendStatus(200);
@@ -45,7 +50,7 @@ export default class Bot extends Emitter {
     });
   }
 
-  listen(message, cb) {
+  hear(message, cb) {
     this.on('message', (payload) => {
       switch (typeof message) {
         case 'string':

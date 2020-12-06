@@ -1,4 +1,4 @@
-import Bot from './models/Bot.js';
+import { Bot } from './models/Bot.js';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -6,6 +6,6 @@ const bot = new Bot({
   PORT: process.env.PORT || 3000,
 });
 
-bot.listen(['Hey', 'hello', 'Hi'], (message) => {
+bot.hear(['Hey', 'hello', 'Hi'], (message) => {
   console.log(message.text);
 });
