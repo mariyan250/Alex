@@ -37,7 +37,9 @@ const determineMessage = async ({ text }, senderID) => {
     return await sendButton(senderID);
   }
 
-  return getRandom(dictionary.responses.problems.understand);
+  return `${getRandom(dictionary.responses.problems.understand)} ${getRandom(
+    dictionary.emoticons.problem
+  )}`;
 };
 
 export const processMessage = async (event) => {
