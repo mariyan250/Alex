@@ -7,5 +7,5 @@ const bot = new Bot({
 });
 
 bot.on('message', (event) => {
-  console.log(event);
+  console.log(event?.message?.text);
 });
