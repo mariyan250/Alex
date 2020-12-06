@@ -39,11 +39,11 @@ export class Bot extends Emitter {
         req.body.entry.forEach((entry) => {
           entry.messaging.forEach((event) => {
             if (event.message)
-              this.emit('message', event.message, this.chat, event);
+              this.emit('message', [event.message, this.chat, event]);
             if (event.postback)
-              this.emit('postback', event.postback, this.chat, event);
+              this.emit('postback', [event.postback, this.chat, event]);
             if (event.attachment)
-              this.emit('attachment', event.attachment, this.chat, event);
+              this.emit('attachment', [event.attachment, this.chat, event]);
           });
         });
         res.sendStatus(200);
@@ -52,16 +52,16 @@ export class Bot extends Emitter {
   }
 
   hear(message, cb) {
-    this.on('message', (payload) => {
+    this.on('message', ([msg, chat, event]) => {
       switch (typeof message) {
         case 'string':
           if (payload.text.toLowerCase().includes(message.toLowerCase()))
-            cb(payload);
+            cb(msg, chat, event);
           break;
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          if (array.includes(payload.text.toLowerCase())) cb(payload);
+          if (array.includes(payload.text.toLowerCase())) cb(msg, chat, event);
           break;
 
         default:
