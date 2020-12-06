@@ -35,3 +35,7 @@ bot.listen(dictionary.greetings, async (event, chat) => {
     )}`
   );
 });
+
+bot.listen(/send payload/g, async (event, chat) => {
+  await chat.sendPostback('Get Started!');
+});

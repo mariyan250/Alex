@@ -47,7 +47,7 @@ export class Chat {
     }
   }
 
-  async sendPostback(title, payloadTitle) {
+  async sendPostback(title) {
     try {
       await fetch(this.URL, {
         ...history.requestConfig,
@@ -55,8 +55,8 @@ export class Chat {
           recipient: { id: this.senderID },
           sender: { id: this.senderID },
           postback: {
-            title: 'Get Weather',
-            payload: 'GET_WEATHER',
+            title,
+            payload: title,
           },
         }),
       });
