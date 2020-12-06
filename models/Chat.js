@@ -47,7 +47,7 @@ export class Chat {
     }
   }
 
-  async sendButton(title) {
+  async sendButton(title, payload) {
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
@@ -62,9 +62,9 @@ export class Chat {
                 text: title,
                 buttons: [
                   {
-                    type: 'web_url',
-                    url: 'https://www.messenger.com',
-                    title: 'Visit Messenger',
+                    type: 'postback',
+                    title,
+                    payload,
                   },
                 ],
               },
