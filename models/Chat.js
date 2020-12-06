@@ -63,8 +63,8 @@ export class Chat {
                 buttons: [
                   {
                     type: 'postback',
-                    title: 'Visit Messenger',
-                    payload: 'VISIT_MESSENGER',
+                    title,
+                    payload,
                   },
                 ],
               },
