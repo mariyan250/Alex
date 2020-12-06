@@ -6,7 +6,7 @@ const bot = new Bot({
   PORT: process.env.PORT || 3000,
 });
 
-bot.hear(['Hey', 'hello', 'Hi'], (message, chat, data) => {
+bot.hear(['Hey', 'hello', 'Hi'], (message, chat, event) => {
   console.log({ message, chat, data });
-  chat.sendMessage(data.sender.id, message.text);
+  chat.sendMessage(event.sender.id, message.text);
 });
