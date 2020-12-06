@@ -65,7 +65,7 @@ export class Bot extends Emitter {
             cb(event, chat);
           }
 
-          if (event.message.text && contains) {
+          if (contains) {
             cb(event, chat);
           }
 
