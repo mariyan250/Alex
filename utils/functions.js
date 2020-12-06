@@ -33,6 +33,11 @@ export const parseWeather = ({ temp, feels_like, weather }) => {
       weatherState = 'слънчево';
       icon = dictionary.emoticons.weather.sunny;
       break;
+
+    case 'Clouds':
+      weatherState = 'облачно';
+      icon = dictionary.emoticons.weather.fog;
+      break;
   }
 
   return `Времето е ${weatherState} ${icon}\nТемпературата е ${temp} градуса и се усеща като ${feels_like}🌡.`;
