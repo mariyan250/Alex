@@ -1,10 +1,11 @@
-import express from 'express';
-import { setRoute } from './routes/webhook.js';
+import { Bot } from './models/Bot.js';
 
-const app = express();
+const bot = new Bot({
+  verifyToken: process.env.VERIFY_TOKEN,
+  pageAccessToken: process.env.PAGE_ACCESS_TOKEN,
+  port: process.env.PORT || 3000,
+});
 
-app.use(express.json());
-
-setRoute(app);
-
-app.listen(process.env.PORT || 3000);
+bot.on('message', (payload) => {
+  console.log(payload.message.text);
+});
