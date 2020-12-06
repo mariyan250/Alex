@@ -52,12 +52,6 @@ export class Bot extends Emitter {
     });
   }
 
-  on(event, cb) {
-    return this.on(event, (data) => {
-      cb(...data);
-    });
-  }
-
   hear(message, cb) {
     this.on('message', (data) => {
       switch (typeof message) {
