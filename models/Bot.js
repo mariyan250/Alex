@@ -53,7 +53,7 @@ export default class Bot extends Emitter {
       ) {
         cb(payload);
       } else if (typeof message === 'object') {
-        const array = Object.entries(message).map((msg) => msg.toLowerCase());
+        const array = Object.values(message).map((msg) => msg.toLowerCase());
         if (array.includes(payload)) cb(payload);
       }
     });
