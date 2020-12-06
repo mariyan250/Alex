@@ -51,8 +51,8 @@ export default class Bot extends Emitter {
         if (payload.toLowerCase().includes(message.toLowerCase()))
           callback(payload);
       } else if (typeof message === 'object') {
-        const messages = Object.entries(message).filter(
-          (msg) => msg.toLowerCase
+        const messages = Object.entries(message).map((msg) =>
+          msg.toLowerCase()
         );
         if (messages.includes(payload)) callback(payload);
       }
