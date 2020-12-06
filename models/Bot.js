@@ -62,7 +62,7 @@ export class Bot extends Emitter {
           );
 
           if (message instanceof RegExp && event.message.text.match(message)) {
-            cb(event, chat, data);
+            cb(event, chat);
           }
 
           if (contains) {
