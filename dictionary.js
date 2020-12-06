@@ -1,4 +1,4 @@
-export default {
+export const dictionary = {
   greetings: ['здравей', 'здрасти', 'здравейте', 'хей', 'hey', 'hi', 'hello'],
   requests: {
     time: ['колко е часа', 'колко е часът', 'час?', 'time'],

@@ -1,5 +1,7 @@
 import { Bot } from './models/Bot.js';
 import { URL } from './constants/url.js';
+import { dictionary } from './dictionary.js';
+import { getRandom } from './utils/functions.js';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -7,8 +9,12 @@ const bot = new Bot({
   URL,
 });
 
-bot.hear(['Hey', 'hello', 'Hi'], async (event, chat) => {
+bot.hear(dictionary.greetings, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
-  await chat.sendMessage('Welcome sir!');
+  await chat.sendMessage(
+    `${getRandom(dictionary.responses.greetings)} ${getRandom(
+      dictionary.emoticons.greetings
+    )}`
+  );
 });
