@@ -28,7 +28,7 @@ export class Chat {
 
   async sendAction(senderID, senderAction) {
     try {
-      await fetch(url, {
+      await fetch(this.URL, {
         ...this.postHeader,
         body: JSON.stringify({
           recipient: { id: senderID },
