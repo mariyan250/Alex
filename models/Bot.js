@@ -49,6 +49,11 @@ export class Bot extends Emitter {
 
   hear(message, cb) {
     this.on('message', (event, chat) => {
+      if (message instanceof RegExp) {
+        if (event.message.text.match(message)) cb(event, chat);
+        return;
+      }
+
       switch (typeof message) {
         case 'string':
           if (event.message.text.toLowerCase().includes(message.toLowerCase()))
