@@ -1,4 +1,4 @@
-import dictionary from '../dictionary.js';
+import { dictionary } from '../dictionary.js';
 
 export const checkDictionary = (dictionary, text) => {
   return dictionary.find((word) => text.toLowerCase().includes(word));
