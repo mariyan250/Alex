@@ -8,11 +8,9 @@ const bot = new Bot({
 });
 
 bot.hear(['Hey', 'hello', 'Hi'], async (event, chat) => {
-  await chat.sendAction(event.sender.id, 'mark_seen');
-  await chat.sendAction(event.sender.id, 'typing_on');
-  await chat.sendMessage(event.sender.id, event.message.text);
-});
-
-bot.on('message', (event, chat) => {
-  console.log(event, chat);
+  const senderID = event.sender.id;
+  const { text } = event.message;
+  await chat.sendAction(senderID, 'mark_seen');
+  await chat.sendAction(senderID, 'typing_on');
+  await chat.sendMessage(senderID, text);
 });
