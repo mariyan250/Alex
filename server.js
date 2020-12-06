@@ -10,7 +10,7 @@ const bot = new Bot({
 bot.hear(['Hey', 'hello', 'Hi'], async (event, chat) => {
   await chat.sendAction(event.sender.id, 'mark_seen');
   await chat.sendAction(event.sender.id, 'typing_on');
-  await chat.sendMessage(event.sender.id, message.text);
+  await chat.sendMessage(event.sender.id, event.message.text);
 });
 
 bot.on('message', (event, chat) => {
