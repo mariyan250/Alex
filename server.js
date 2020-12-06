@@ -1,5 +1,6 @@
 import { Bot } from './models/Bot.js';
 import { URL } from './constants/url.js';
+import { dictionary } from './dictionary.js';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -7,8 +8,8 @@ const bot = new Bot({
   URL,
 });
 
-bot.hear(['Hey'], async (event, chat) => {
+bot.hear(dictionary.greetings, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
-  console.log(event.message);
+  await chat.sendMessage('Hey!');
 });
