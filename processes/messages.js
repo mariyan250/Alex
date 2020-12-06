@@ -1,5 +1,6 @@
 import { sendMessage } from '../templates/sendMessage.js';
 import { sendAction } from '../templates/sendAction.js';
+import { sendButton } from '../templates/sendButton';
 
 import { getTime } from '../services/time.js';
 import { getWeather } from '../services/weather.js';
@@ -34,6 +35,7 @@ const determineMessage = async ({ text }) => {
   // Wikipedia searching
   if (text.toLowerCase().includes('search')) {
     const data = await getWikipedia(text);
+    await sendButton();
     console.log(data);
     return data;
   }
