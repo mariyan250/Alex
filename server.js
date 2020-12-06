@@ -5,3 +5,7 @@ const bot = new Bot({
   pageAccessToken: process.env.PAGE_ACCESS_TOKEN,
   port: process.env.PORT || 3000,
 });
+
+bot.on('message', (event) => {
+  console.log(event.message.text);
+});
