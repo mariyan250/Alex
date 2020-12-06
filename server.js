@@ -6,6 +6,6 @@ const bot = new Bot({
   port: process.env.PORT || 3000,
 });
 
-bot.listen('Hey', (message) => {
+bot.listen(['Hey', 'hello', 'Hi'], (message) => {
   console.log(message.text);
 });
