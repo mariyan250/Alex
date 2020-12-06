@@ -62,7 +62,7 @@ bot.on('postback', async (event, chat) => {
   await chat.sendAction('typing_on');
 
   await chat.sendButton('Избери опция', [
-    { type: 'postback', title: 'Здравей! ☀️', payload: 'GET_GREETING' },
+    { type: 'postback', title: 'Здравей! 🙋‍♂️', payload: 'GET_GREETING' },
     { type: 'postback', title: 'Какво е времето? ☀️', payload: 'GET_WEATHER' },
   ]);
 });
