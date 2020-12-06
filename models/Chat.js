@@ -5,7 +5,7 @@ export class Chat {
     this.URL = url;
   }
 
-  async sendMessage(recipientId, message) {
+  async sendMessage(senderID, message) {
     try {
       await fetch(this.URL, {
         method: 'POST',
@@ -14,11 +14,28 @@ export class Chat {
         },
         body: JSON.stringify({
           recipient: {
-            id: recipientId,
+            id: senderID,
           },
           message: {
             text: message,
           },
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async sendAction(senderID, senderAction) {
+    try {
+      await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          recipient: { id: senderID },
+          sender_action: senderAction,
         }),
       });
     } catch (error) {
