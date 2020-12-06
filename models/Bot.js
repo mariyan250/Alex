@@ -55,13 +55,13 @@ export class Bot extends Emitter {
     this.on('message', (data) => {
       switch (typeof message) {
         case 'string':
-          if (payload.text.toLowerCase().includes(message.toLowerCase()))
+          if (data[0].text.toLowerCase().includes(message.toLowerCase()))
             cb(...data);
           break;
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          if (array.includes(payload.text.toLowerCase())) cb(...data);
+          if (array.includes(data[0].text.toLowerCase())) cb(...data);
           break;
 
         default:
