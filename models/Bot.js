@@ -52,16 +52,16 @@ export class Bot extends Emitter {
   }
 
   hear(message, cb) {
-    this.on('message', ([msg, chat, event]) => {
+    this.on('message', ([data, chat, event]) => {
       switch (typeof message) {
         case 'string':
           if (payload.text.toLowerCase().includes(message.toLowerCase()))
-            cb(msg, chat, event);
+            cb(data, chat, event);
           break;
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          if (array.includes(payload.text.toLowerCase())) cb(msg, chat, event);
+          if (array.includes(payload.text.toLowerCase())) cb(data, chat, event);
           break;
 
         default:
