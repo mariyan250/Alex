@@ -19,7 +19,7 @@ export default class Bot extends Emitter {
     this.app = express();
     this.app.use(express.json());
     this.setWebhook();
-    this.app.listen(this.port);
+    this.app.listen(this.PORT);
   }
 
   setWebhook() {
