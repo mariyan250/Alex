@@ -20,8 +20,6 @@ export class Chat {
   }
 
   async sendMessage(message) {
-    console.log(this.senderID);
-
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
@@ -36,8 +34,6 @@ export class Chat {
   }
 
   async sendAction(senderAction) {
-    console.log(this.senderID);
-
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
