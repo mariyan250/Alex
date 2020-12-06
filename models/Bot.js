@@ -55,7 +55,7 @@ export class Bot extends Emitter {
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
           const contains = array.some((el) =>
-            el.toLowerCase().includes(event.message.text.toLowerCase())
+            event.message.text.toLowerCase().includes(el.toLowerCase())
           );
           if (contains) cb(event, chat);
           break;
