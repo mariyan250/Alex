@@ -1,7 +1,5 @@
 import express from 'express';
-
 import Emitter from 'events';
-
 import { Chat } from './Chat.js';
 
 export class Bot extends Emitter {
