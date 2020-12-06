@@ -38,11 +38,12 @@ export class Bot extends Emitter {
       if (req.body.object === 'page') {
         req.body.entry.forEach((entry) => {
           entry.messaging.forEach((event) => {
-            if (event.message) this.emit('message', event.message, this.chat);
+            if (event.message)
+              this.emit('message', event.message, this.chat, event);
             if (event.postback)
-              this.emit('postback', event.postback, this.chat);
+              this.emit('postback', event.postback, this.chat, event);
             if (event.attachment)
-              this.emit('attachment', event.attachment, this.chat);
+              this.emit('attachment', event.attachment, this.chat, event);
           });
         });
         res.sendStatus(200);
