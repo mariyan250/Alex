@@ -47,7 +47,7 @@ export class Chat {
     }
   }
 
-  async sendButton(title, payload) {
+  async sendButton(title, buttons) {
     try {
       await fetch(this.URL, {
         ...this.requestConfig,
@@ -59,14 +59,8 @@ export class Chat {
               type: 'template',
               payload: {
                 template_type: 'button',
-                text: 'Options',
-                buttons: [
-                  {
-                    type: 'postback',
-                    title,
-                    payload,
-                  },
-                ],
+                text: title,
+                buttons,
               },
             },
           },

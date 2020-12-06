@@ -39,7 +39,9 @@ bot.listen(dictionary.greetings, async (event, chat) => {
 bot.listen(/send payload/g, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
-  await chat.sendButton('Какво е времето?', 'GET_WEATHER');
+  await chat.sendButton('Избери опция', [
+    { type: 'postback', title: 'Какво е времето?☀️', payload: 'GET_WEATHER' },
+  ]);
 });
 
 bot.on('postback', async (event, chat) => {
