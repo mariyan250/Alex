@@ -36,6 +36,6 @@ bot.hear('search', async (event, chat) => {
   await getWikipedia('Elon Musk!');
 });
 
-bot.hear(/fuck/g, (event, chat) => {
+bot.hear(/Welcome!/g, (event, chat) => {
   console.log(event.message.text);
 });
