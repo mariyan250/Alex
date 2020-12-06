@@ -9,7 +9,7 @@ const bot = new Bot({
   URL,
 });
 
-bot.hear(dictionary.greetings, async (event, chat) => {
+bot.hear(['Hey'], async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendMessage('ZDR!');
