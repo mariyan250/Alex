@@ -57,10 +57,12 @@ export class Bot extends Emitter {
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          const contains = array.indexOf(event.message.text.toLowerCase());
+          const contains = array.some((el) =>
+            event.message.text.toLowerCase().includes(el)
+          );
           if (message instanceof RegExp && event.message.text.match(message))
             cb(event, chat);
-          if (contains !== -1) cb(event, chat);
+          if (contains) cb(event, chat);
           break;
 
         default:
