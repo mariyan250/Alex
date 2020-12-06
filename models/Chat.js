@@ -46,4 +46,22 @@ export class Chat {
       console.log(error);
     }
   }
+
+  async sendPostback(title, payloadTitle) {
+    try {
+      await fetch(this.URL, {
+        ...history.requestConfig,
+        body: JSON.stringify({
+          recipient: { id: this.senderID },
+          sender: { id: this.senderID },
+          postback: {
+            title: 'Get Weather',
+            payload: 'GET_WEATHER',
+          },
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

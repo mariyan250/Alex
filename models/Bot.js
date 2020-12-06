@@ -47,7 +47,7 @@ export class Bot extends Emitter {
     });
   }
 
-  hear(message, cb) {
+  listen(message, cb) {
     this.on('message', (event, chat) => {
       switch (typeof message) {
         case 'string':
@@ -60,9 +60,15 @@ export class Bot extends Emitter {
           const contains = array.some((el) =>
             event.message.text.toLowerCase().includes(el)
           );
-          if (message instanceof RegExp && event.message.text.match(message))
+
+          if (message instanceof RegExp && event.message.text.match(message)) {
+            cb(event, chat, data);
+          }
+
+          if (contains) {
             cb(event, chat);
-          if (contains) cb(event, chat);
+          }
+
           break;
 
         default:
