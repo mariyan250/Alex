@@ -2,19 +2,24 @@ import express from 'express';
 import Emitter from 'events';
 
 export default class Bot extends Emitter {
-  app = express();
-
   constructor(options) {
-    super();
-
     if (!options.verifyToken || !options.pageAccessToken || !options.port)
       throw new Error('Please specify options and port to start on..');
+
+    super();
 
     this.verifyToken = options.verifyToken;
     this.pageAccessToken = options.pageAccessToken;
     this.port = options.port;
 
+    this.initApp();
+  }
+
+  initApp() {
+    this.app = express();
+    this.app.use(express.json());
     this.setWebhook();
+    this.app.listen(this.port, () => console.log('Server started..'));
   }
 
   setWebhook() {
@@ -38,7 +43,5 @@ export default class Bot extends Emitter {
         res.sendStatus(200);
       }
     });
-
-    this.app.listen(this.port, () => console.log('Server started..'));
   }
 }
