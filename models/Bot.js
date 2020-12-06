@@ -53,7 +53,7 @@ export class Bot extends Emitter {
   }
 
   on(event, cb) {
-    this.on(event, (data) => {
+    return this.on(event, (data) => {
       cb(...data);
     });
   }
