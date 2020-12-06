@@ -3,13 +3,13 @@ import Emitter from 'events';
 
 export default class Bot extends Emitter {
   constructor(options) {
-    if (!options.verifyToken || !options.pageAccessToken || !options.port)
+    if (!options.verify_token || !options.page_access_token || !options.port)
       throw new Error('Please specify options and port to start on..');
 
     super();
 
-    this.verifyToken = options.verifyToken;
-    this.pageAccessToken = options.pageAccessToken;
+    this.verify_token = options.verify_token;
+    this.page_access_token = options.page_access_token;
     this.port = options.port;
 
     this.initApp();
@@ -24,7 +24,7 @@ export default class Bot extends Emitter {
 
   setWebhook() {
     this.app.get('/webhook', (req, res) => {
-      if (req.query['hub.verify_token'] === this.verifyToken) {
+      if (req.query['hub.verify_token'] === this.verify_token) {
         res.status(200).send(req.query['hub.challenge']);
       } else {
         res.sendStatus(403);

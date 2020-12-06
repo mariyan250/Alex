@@ -1,11 +1,13 @@
 import Bot from './models/Bot.js';
 
 const bot = new Bot({
-  verifyToken: process.env.VERIFY_TOKEN,
-  pageAccessToken: process.env.PAGE_ACCESS_TOKEN,
+  verify_token: process.env.VERIFY_TOKEN,
+  page_access_token: process.env.PAGE_ACCESS_TOKEN,
   port: process.env.PORT || 3000,
 });
 
 bot.on('message', (event) => {
-  console.log(event?.message?.text);
+  if (event.message.text) {
+    console.log(event.message.text);
+  }
 });
