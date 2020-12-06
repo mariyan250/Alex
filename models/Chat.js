@@ -59,6 +59,7 @@ export class Chat {
               type: 'template',
               payload: {
                 template_type: 'button',
+                text: 'Options',
                 buttons: [
                   {
                     type: 'postback',
