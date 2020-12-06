@@ -1,7 +1,7 @@
 import express from 'express';
 import Emitter from 'events';
 
-export class Bot extends Emitter {
+export default class Bot extends Emitter {
   app = express();
 
   constructor(options) {
