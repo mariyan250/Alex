@@ -55,7 +55,7 @@ export default class Bot extends Emitter {
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          if (array.includes(payload.text)) cb(payload);
+          if (array.includes(payload.text.toLowerCase())) cb(payload);
           break;
       }
     });
