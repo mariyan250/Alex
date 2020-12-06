@@ -54,7 +54,10 @@ export class Bot extends Emitter {
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          if (array.includes(event?.message?.text?.toLowerCase()))
+          if (
+            event.message.text &&
+            array.includes(event.message.text.toLowerCase())
+          )
             cb(event, chat);
           break;
 
