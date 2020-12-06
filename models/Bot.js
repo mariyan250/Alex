@@ -25,8 +25,7 @@ export class Bot extends Emitter {
     this.setWebhook();
     this.app.listen(this.PORT);
   }
-
-  setWebhook() {
+  *setWebhook() {
     this.app.get('/webhook', (req, res) => {
       if (req.query['hub.verify_token'] === this.VERIFY_TOKEN) {
         res.status(200).send(req.query['hub.challenge']);
@@ -54,6 +53,7 @@ export class Bot extends Emitter {
 
   hear(message, cb) {
     this.on('message', (data, chat, event) => {
+      console.log(data, chat, event);
       switch (typeof message) {
         case 'string':
           if (data.text.toLowerCase().includes(message.toLowerCase()))
