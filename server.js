@@ -7,8 +7,12 @@ const bot = new Bot({
   URL,
 });
 
-bot.hear(['Hey', 'hello', 'Hi'], async (message, chat, event) => {
+bot.hear(['Hey', 'hello', 'Hi'], async (event, chat) => {
   await chat.sendAction(event.sender.id, 'mark_seen');
   await chat.sendAction(event.sender.id, 'typing_on');
   await chat.sendMessage(event.sender.id, message.text);
+});
+
+bot.on('message', (event, chat) => {
+  console.log(event, chat);
 });

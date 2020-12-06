@@ -8,14 +8,10 @@ export class Bot extends Emitter {
   constructor(options) {
     if (!options.VERIFY_TOKEN || !options.PORT || !options.URL)
       throw new Error('Please specify options, url and port to start on..');
-
     super();
-
     this.VERIFY_TOKEN = options.VERIFY_TOKEN;
     this.PORT = options.PORT;
-
     this.chat = new Chat(options.URL);
-
     this.initApp();
   }
 
@@ -38,12 +34,9 @@ export class Bot extends Emitter {
       if (req.body.object === 'page') {
         req.body.entry.forEach((entry) => {
           entry.messaging.forEach((event) => {
-            if (event.message)
-              this.emit('message', event.message, this.chat, event);
-            if (event.postback)
-              this.emit('postback', event.postback, this.chat, event);
-            if (event.attachment)
-              this.emit('attachment', event.attachment, this.chat, event);
+            if (event.message) this.emit('message', event, this.chat);
+            if (event.postback) this.emit('postback', event, this.chat);
+            if (event.attachment) this.emit('attachment', event, this.chat);
           });
         });
         res.sendStatus(200);
@@ -52,17 +45,17 @@ export class Bot extends Emitter {
   }
 
   hear(message, cb) {
-    this.on('message', (data, chat, event) => {
-      console.log(data, chat, event);
+    this.on('message', (event, chat) => {
+      console.log(event, chat);
       switch (typeof message) {
         case 'string':
-          if (data.text.toLowerCase().includes(message.toLowerCase()))
-            cb(data, chat, event);
+          if (event.message.text.toLowerCase().includes(message.toLowerCase()))
+            cb(event, chat);
           break;
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-          if (array.includes(message.text.toLowerCase())) cb(data, chat, event);
+          if (array.includes(event.message.text.toLowerCase())) cb(event, chat);
           break;
 
         default:

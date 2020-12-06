@@ -1,21 +1,20 @@
 import fetch from 'node-fetch';
 
 export class Chat {
-  postHeader = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  };
-
   constructor(url) {
     this.URL = url;
+    this.requestConfig = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
   }
 
   async sendMessage(senderID, message) {
     try {
       await fetch(this.URL, {
-        ...this.postHeader,
+        ...this.requestConfig,
         body: JSON.stringify({
           recipient: { id: senderID },
           message: { text: message },
@@ -29,7 +28,7 @@ export class Chat {
   async sendAction(senderID, senderAction) {
     try {
       await fetch(this.URL, {
-        ...this.postHeader,
+        ...this.requestConfig,
         body: JSON.stringify({
           recipient: { id: senderID },
           sender_action: senderAction,
