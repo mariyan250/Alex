@@ -11,11 +11,8 @@ const bot = new Bot({
   URL,
 });
 
-bot.on('message', async (event, chat) => {
-  await chat.sendAction('mark_seen');
-});
-
 bot.hear(dictionary.greetings, async (event, chat) => {
+  await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendMessage(
     `${getRandom(dictionary.responses.greetings)} ${getRandom(
@@ -25,10 +22,13 @@ bot.hear(dictionary.greetings, async (event, chat) => {
 });
 
 bot.hear(dictionary.requests.weather, async (event, chat) => {
+  await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
 });
 
 bot.hear('search', async (event, chat) => {
+  await chat.sendAction('mark_seen');
+  await chat.sendAction('typing_on');
   await getWikipedia('Elon Musk!');
 });
