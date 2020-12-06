@@ -12,9 +12,5 @@ const bot = new Bot({
 bot.hear(dictionary.greetings, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
-  await chat.sendMessage(
-    `${getRandom(dictionary.responses.greetings)} ${getRandom(
-      dictionary.emoticons.greetings
-    )}`
-  );
+  await chat.sendMessage('ZDR!');
 });
