@@ -6,8 +6,6 @@ const bot = new Bot({
   port: process.env.PORT || 3000,
 });
 
-bot.on('message', (event) => {
-  if (event.message) {
-    console.log(event.message);
-  }
+bot.on('message', (message) => {
+  console.log(message.text);
 });
