@@ -50,13 +50,12 @@ bot.listen(/send payload/g, async (event, chat) => {
 });
 
 bot.on('postback', async (event, chat) => {
+  await chat.sendAction('mark_seen');
+  await chat.sendAction('typing_on');
+
   if (event.postback.payload === 'GET_WEATHER') {
-    await chat.sendAction('mark_seen');
-    await chat.sendAction('typing_on');
     await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
   } else if (event.postback.payload === 'GET_GREETING') {
-    await chat.sendAction('mark_seen');
-    await chat.sendAction('typing_on');
     await chat.sendMessage(
       `${getRandom(dictionary.responses.greetings)} ${getRandom(
         dictionary.emoticons.greetings
