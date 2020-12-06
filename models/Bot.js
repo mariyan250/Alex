@@ -49,24 +49,21 @@ export class Bot extends Emitter {
 
   listen(message, cb) {
     this.on('message', (event, chat) => {
+      const { text } = event.message;
+
       switch (typeof message) {
         case 'string':
-          if (event.message.text.toLowerCase().includes(message.toLowerCase()))
+          if (text.toLowerCase().includes(message.toLowerCase()))
             cb(event, chat);
           break;
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
           const contains = array.some(
-            (el) =>
-              event.message.text &&
-              event.message.text.toLowerCase().includes(el)
+            (el) => text && text.toLowerCase().includes(el)
           );
 
-          if (
-            (message instanceof RegExp && event.message.text.match(message)) ||
-            contains
-          ) {
+          if ((message instanceof RegExp && text.match(message)) || contains) {
             cb(event, chat);
           }
 
