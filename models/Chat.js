@@ -58,16 +58,12 @@ export class Chat {
             attachment: {
               type: 'template',
               payload: {
-                template_type: 'generic',
-                elements: [
+                template_type: 'button',
+                buttons: [
                   {
-                    buttons: [
-                      {
-                        type: 'postback',
-                        title: 'Start Chatting',
-                        payload: 'DEVELOPER_DEFINED_PAYLOAD',
-                      },
-                    ],
+                    type: 'postback',
+                    title: 'Visit Messenger',
+                    payload: 'VISIT_MESSENGER',
                   },
                 ],
               },
