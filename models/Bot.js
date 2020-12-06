@@ -6,10 +6,13 @@ export class Bot extends Emitter {
   constructor(options) {
     if (!options.VERIFY_TOKEN || !options.PORT || !options.URL)
       throw new Error('Please specify options, url and port to start on..');
+
     super();
+
     this.VERIFY_TOKEN = options.VERIFY_TOKEN;
     this.PORT = options.PORT;
     this.chat = new Chat(options.URL);
+
     this.initApp();
   }
 
@@ -54,11 +57,9 @@ export class Bot extends Emitter {
 
         case 'object':
           const array = Object.values(message).map((msg) => msg.toLowerCase());
-
           const contains = array.some((el) =>
             event.message.text.toLowerCase().includes(el.toLowerCase())
           );
-
           if (contains) cb(event, chat);
           break;
 
