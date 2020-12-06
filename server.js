@@ -40,11 +40,6 @@ bot.listen(/send payload/g, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendButton('Избери опция', [
-    {
-      type: 'postback',
-      title: 'Кажи здравей на Алекс!',
-      payload: 'GET_GREETING',
-    },
     { type: 'postback', title: 'Какво е времето? ☀️', payload: 'GET_WEATHER' },
   ]);
 });
