@@ -63,6 +63,9 @@ export class Bot extends Emitter {
           const array = Object.values(message).map((msg) => msg.toLowerCase());
           if (array.includes(payload.text.toLowerCase())) cb(payload);
           break;
+
+        default:
+          throw new Error('Please enter valid message to listen for..');
       }
     });
   }

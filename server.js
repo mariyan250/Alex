@@ -7,5 +7,6 @@ const bot = new Bot({
 });
 
 bot.hear(['Hey', 'hello', 'Hi'], (message, chat, data) => {
+  console.log({ message, chat, data });
   chat.sendMessage(data.sender.id, message.text);
 });
