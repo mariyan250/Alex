@@ -44,4 +44,18 @@ export default class Bot extends Emitter {
       }
     });
   }
+
+  listen(message, callback) {
+    this.on('message', (payload) => {
+      if (typeof message === 'string') {
+        if (payload.toLowerCase().includes(message.toLowerCase()))
+          callback(payload);
+      } else if (typeof message === 'object') {
+        const messages = Object.entries(message).filter(
+          (msg) => msg.toLowerCase
+        );
+        if (messages.includes(payload)) callback(payload);
+      }
+    });
+  }
 }

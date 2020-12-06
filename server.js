@@ -9,3 +9,7 @@ const bot = new Bot({
 bot.on('message', (message) => {
   console.log(message.text);
 });
+
+bot.listen('Hey', (message) => {
+  console.log(message.text);
+});
