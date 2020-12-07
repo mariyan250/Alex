@@ -39,15 +39,16 @@ bot.listen(dictionary.greetings, async (event, chat) => {
 bot.on('postback', async (event, chat) => {
   const { payload } = event.postback;
 
-  await chat.sendAction('mark_seen');
-  await chat.sendAction('typing_on');
-
   switch (payload) {
     case 'GET_WEATHER':
+      await chat.sendAction('mark_seen');
+      await chat.sendAction('typing_on');
       await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
       break;
 
     case 'GET_GREETING':
+      await chat.sendAction('mark_seen');
+      await chat.sendAction('typing_on');
       await chat.sendMessage(
         `${getRandom(dictionary.responses.greetings)} ${getRandom(
           dictionary.emoticons.greetings
