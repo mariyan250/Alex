@@ -87,8 +87,6 @@ export class Chat {
           ],
         }),
       });
-
-      console.log(await res.json());
     } catch (error) {
       console.log(error);
     }
