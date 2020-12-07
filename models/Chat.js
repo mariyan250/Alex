@@ -98,10 +98,10 @@ export class Chat {
 
   async sendGetStarted() {
     try {
-      await fetch(URL_MESSAGE_PROFILE, {
+      await fetch(this.URL, {
         ...this.requestConfig,
         body: JSON.stringify({
-          get_started: { payload: 'GET_STARTED' },
+          message: { payload: 'GET_STARTED' },
         }),
       });
     } catch (error) {
