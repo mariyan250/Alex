@@ -78,13 +78,15 @@ export class Chat {
         body: JSON.stringify({
           recipient: { id: this.senderID },
           sender: { id: this.senderID },
-          persistent_menu: [
-            {
-              locale: 'default',
-              composer_input_disabled: false,
-              call_to_actions: callToActions,
-            },
-          ],
+          message: {
+            persistent_menu: [
+              {
+                locale: 'default',
+                composer_input_disabled: false,
+                call_to_actions: callToActions,
+              },
+            ],
+          },
         }),
       });
     } catch (error) {
