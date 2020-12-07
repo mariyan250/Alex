@@ -56,6 +56,7 @@ bot.on('postback', async (event, chat) => {
       break;
 
     case 'GET_STARTED':
+      await chat.sendMessage('Hey!');
       await chat.sendPersistantMenu([
         {
           title: 'Help',
