@@ -102,7 +102,7 @@ export class Chat {
       const req = await fetch(MESSENGER_PROFILE_URL, {
         ...this.requestConfig,
         body: JSON.stringify({
-          message: { payload: 'GET_STARTED' },
+          get_started: { payload: 'GET_STARTED' },
         }),
       });
 
