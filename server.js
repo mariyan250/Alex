@@ -39,9 +39,23 @@ bot.listen(dictionary.greetings, async (event, chat) => {
 bot.listen(/send payload/g, async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
-  await chat.sendButton('Избери опция', [
-    { type: 'postback', title: 'Здравей! ☀️', payload: 'GET_GREETING' },
-    { type: 'postback', title: 'Какво е времето? ☀️', payload: 'GET_WEATHER' },
+  await chat.sendPersistantMenu([
+    {
+      type: 'postback',
+      title: 'Talk to an agent',
+      payload: 'CARE_HELP',
+    },
+    {
+      type: 'postback',
+      title: 'Outfit suggestions',
+      payload: 'CURATION',
+    },
+    {
+      type: 'web_url',
+      title: 'Shop now',
+      url: 'https://www.originalcoastclothing.com/',
+      webview_height_ratio: 'full',
+    },
   ]);
 });
 
@@ -58,11 +72,4 @@ bot.on('postback', async (event, chat) => {
       )}`
     );
   }
-
-  await chat.sendAction('typing_on');
-
-  await chat.sendButton('Избери опция', [
-    { type: 'postback', title: 'Здравей! 🙋‍♂️', payload: 'GET_GREETING' },
-    { type: 'postback', title: 'Какво е времето? ☀️', payload: 'GET_WEATHER' },
-  ]);
 });
