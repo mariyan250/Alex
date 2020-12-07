@@ -93,4 +93,17 @@ export class Chat {
       console.log(error);
     }
   }
+
+  async sendGetStarted() {
+    try {
+      await fetch(this.URL, {
+        ...this.requestConfig,
+        body: JSON.stringify({
+          get_started: { payload: 'GET_STARTED' },
+        }),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }

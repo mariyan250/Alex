@@ -45,6 +45,8 @@ export class Bot extends Emitter {
         res.sendStatus(200);
       }
     });
+
+    this.chat.sendGetStarted();
   }
 
   listen(message, cb) {

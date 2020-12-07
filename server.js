@@ -36,40 +36,38 @@ bot.listen(dictionary.greetings, async (event, chat) => {
   );
 });
 
-bot.listen(/send payload/g, async (event, chat) => {
-  await chat.sendAction('mark_seen');
-  await chat.sendAction('typing_on');
-  await chat.sendPersistantMenu([
-    {
-      type: 'postback',
-      title: 'Talk to an agent',
-      payload: 'CARE_HELP',
-    },
-    {
-      type: 'postback',
-      title: 'Outfit suggestions',
-      payload: 'CURATION',
-    },
-    {
-      type: 'web_url',
-      title: 'Shop now',
-      url: 'https://www.originalcoastclothing.com/',
-      webview_height_ratio: 'full',
-    },
-  ]);
-});
-
 bot.on('postback', async (event, chat) => {
+  const { payload } = event.postback;
+
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
 
-  if (event.postback.payload === 'GET_WEATHER') {
-    await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
-  } else if (event.postback.payload === 'GET_GREETING') {
-    await chat.sendMessage(
-      `${getRandom(dictionary.responses.greetings)} ${getRandom(
-        dictionary.emoticons.greetings
-      )}`
-    );
+  switch (payload) {
+    case 'GET_WEATHER':
+      await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
+      break;
+
+    case 'GET_GREETING':
+      await chat.sendMessage(
+        `${getRandom(dictionary.responses.greetings)} ${getRandom(
+          dictionary.emoticons.greetings
+        )}`
+      );
+      break;
+
+    case 'GET_STARTED':
+      await chat.sendPersistantMenu([
+        {
+          title: 'Help',
+          type: 'postback',
+          payload: 'HELP_PAYLOAD',
+        },
+        {
+          title: 'Contact Me',
+          type: 'postback',
+          payload: 'CONTACT_INFO_PAYLOAD',
+        },
+      ]);
+      break;
   }
 });
