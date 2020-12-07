@@ -75,18 +75,14 @@ export class Chat {
 
   async sendPersistantMenu(callToActions) {
     try {
-      await fetch(this.URL, {
+      await fetch(MESSENGER_PROFILE_URL, {
         ...this.requestConfig,
         body: JSON.stringify({
           persistent_menu: [
             {
               locale: 'default',
               composer_input_disabled: false,
-              call_to_actions: {
-                title: 'Info',
-                type: 'nested',
-                call_to_actions: callToActions,
-              },
+              call_to_actions: callToActions,
             },
           ],
         }),
