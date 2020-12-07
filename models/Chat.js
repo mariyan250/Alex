@@ -102,6 +102,7 @@ export class Chat {
           get_started: { payload: 'GET_STARTED' },
         }),
       });
+      console.log('SENDED GET STARTED BUTTON!');
     } catch (error) {
       console.log(error);
     }
