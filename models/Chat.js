@@ -80,7 +80,11 @@ export class Chat {
             {
               locale: 'default',
               composer_input_disabled: false,
-              call_to_actions: callToActions,
+              call_to_actions: {
+                title: 'Info',
+                type: 'nested',
+                call_to_actions: callToActions,
+              },
             },
           ],
         }),
