@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
 
+import { URL_MESSAGE_PROFILE } from '../constants/url.js';
+
 export class Chat {
   constructor(url) {
     this.URL = url;
@@ -96,7 +98,7 @@ export class Chat {
 
   async sendGetStarted() {
     try {
-      await fetch(this.URL, {
+      await fetch(this.URL_MESSAGE_PROFILE, {
         ...this.requestConfig,
         body: JSON.stringify({
           get_started: { payload: 'GET_STARTED' },
