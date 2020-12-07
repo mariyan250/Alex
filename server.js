@@ -59,7 +59,7 @@ bot.on('postback', async (event, chat) => {
       await chat.sendMessage('Hey!');
       await chat.sendPersistantMenu([
         {
-          title: 'Help',
+          title: 'HHH',
           type: 'postback',
           payload: 'HELP_PAYLOAD',
         },
