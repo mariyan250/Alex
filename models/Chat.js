@@ -1,7 +1,5 @@
 import fetch from 'node-fetch';
 
-import { URL_MESSAGE_PROFILE } from '../constants/url.js';
-
 export class Chat {
   constructor(url) {
     this.URL = url;
