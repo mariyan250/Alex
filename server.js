@@ -1,4 +1,4 @@
-import { Bot } from './models/Bot.js';
+import { Bot } from './lib/Bot.js';
 import { URL } from './constants/url.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
