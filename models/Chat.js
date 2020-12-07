@@ -97,6 +97,7 @@ export class Chat {
   }
 
   async sendGetStarted() {
+    console.log('SENDING GETING STARTED ');
     try {
       await fetch(MESSENGER_PROFILE_URL, {
         ...this.requestConfig,
@@ -104,6 +105,8 @@ export class Chat {
           message: { payload: 'GET_STARTED' },
         }),
       });
+
+      console.log('SUCCESSFULLY SENDED GETING STARTED');
     } catch (error) {
       console.log(error);
     }
