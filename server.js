@@ -58,14 +58,9 @@ bot.on('postback', async (event, chat) => {
     case 'GET_STARTED':
       await chat.sendPersistantMenu([
         {
-          title: 'HHH',
+          title: 'Какво е времето? ',
           type: 'postback',
-          payload: 'HELP_PAYLOAD',
-        },
-        {
-          title: 'Contact Me',
-          type: 'postback',
-          payload: 'CONTACT_INFO_PAYLOAD',
+          payload: 'GET_WEATHER',
         },
       ]);
       break;
