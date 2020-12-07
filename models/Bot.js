@@ -27,6 +27,7 @@ export class Bot extends Emitter {
     this.app.get('/webhook', (req, res) => {
       if (req.query['hub.verify_token'] === this.VERIFY_TOKEN) {
         res.status(200).send(req.query['hub.challenge']);
+        this.chat.sendGetStarted();
       } else {
         res.sendStatus(403);
       }
@@ -45,8 +46,6 @@ export class Bot extends Emitter {
         res.sendStatus(200);
       }
     });
-
-    this.chat.sendGetStarted();
   }
 
   listen(message, cb) {
