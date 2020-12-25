@@ -42,9 +42,7 @@ bot.on('postback', async (event, chat) => {
       break;
 
     case 'GET_STARTED':
-      await chat.sendMessage(
-        'Здравей! Аз съм Алекс и съм твоят персонален асистент!'
-      );
+      await chat.sendMessage(dictionary.responses.start);
       break;
   }
 });
