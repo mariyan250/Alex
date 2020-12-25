@@ -22,7 +22,6 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 bot.listen('search', async (event, chat) => {
   await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
-  await getWikipedia('Elon Musk!');
 });
 
 // Greetings
