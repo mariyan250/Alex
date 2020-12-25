@@ -2,7 +2,6 @@ import { Bot } from './lib/Bot.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
 import { getWeather } from './services/weather.js';
-import { getWikipedia } from './services/wikipedia.js';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -11,16 +10,11 @@ const bot = new Bot({
 
 // Weather
 bot.listen(dictionary.requests.weather, async (event, chat) => {
-  await chat.sendAction('mark_seen');
-  await chat.sendAction('typing_on');
   await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
 });
 
 // Wikipedia
-bot.listen('search', async (event, chat) => {
-  await chat.sendAction('mark_seen');
-  await chat.sendAction('typing_on');
-});
+bot.listen('search', async (event, chat) => {});
 
 // Greetings
 bot.listen(dictionary.greetings, async (event, chat) => {
@@ -49,7 +43,7 @@ bot.on('postback', async (event, chat) => {
 
     case 'GET_STARTED':
       await chat.sendMessage(
-        'Здравей! Аз съм Алекс и ще съм твоя персонален асистент!'
+        'Здравей! Аз съм Алекс и съм твоят персонален асистент!'
       );
       break;
   }
