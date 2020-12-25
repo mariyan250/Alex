@@ -38,7 +38,9 @@ bot.on('postback', async (event, chat) => {
 
   switch (payload) {
     case 'GET_WEATHER':
-      await chat.sendAction('mark_seen');
+      const res = await chat.sendAction('mark_seen');
+
+      console.log(res);
       await chat.sendAction('typing_on');
       await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
       break;
