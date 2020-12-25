@@ -11,8 +11,7 @@ const bot = new Bot({
 
 // Weather
 bot.listen(dictionary.requests.weather, async (event, chat) => {
-  const res = await chat.sendAction('mark_seen');
-  console.log(res);
+  await chat.sendAction('mark_seen');
   await chat.sendAction('typing_on');
   await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
 });
