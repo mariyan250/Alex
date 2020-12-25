@@ -1,5 +1,4 @@
 import { Bot } from './lib/Bot.js';
-import { URL } from './constants/url.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
 import { getWeather } from './services/weather.js';
@@ -8,7 +7,6 @@ import { getWikipedia } from './services/wikipedia.js';
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
   PORT: process.env.PORT,
-  URL,
 });
 
 // Weather
