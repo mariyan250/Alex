@@ -24,13 +24,11 @@ bot.listen('search', async (event, chat) => {
 
 // Greetings
 bot.listen(dictionary.greetings, async (event, chat) => {
-  await chat.sendAction('mark_seen');
-  await chat.sendAction('typing_on');
-  // await chat.sendMessage(
-  //   `${getRandom(dictionary.responses.greetings)} ${getRandom(
-  //     dictionary.emoticons.greetings
-  //   )}`
-  // );
+  await chat.sendMessage(
+    `${getRandom(dictionary.responses.greetings)} ${getRandom(
+      dictionary.emoticons.greetings
+    )}`
+  );
 });
 
 bot.on('postback', async (event, chat) => {
@@ -38,14 +36,10 @@ bot.on('postback', async (event, chat) => {
 
   switch (payload) {
     case 'GET_WEATHER':
-      await chat.sendAction('mark_seen');
-      await chat.sendAction('typing_on');
       await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
       break;
 
     case 'GET_GREETING':
-      await chat.sendAction('mark_seen');
-      await chat.sendAction('typing_on');
       await chat.sendMessage(
         `${getRandom(dictionary.responses.greetings)} ${getRandom(
           dictionary.emoticons.greetings
@@ -54,13 +48,9 @@ bot.on('postback', async (event, chat) => {
       break;
 
     case 'GET_STARTED':
-      await chat.sendPersistantMenu([
-        {
-          title: '    Какво е времето? ☀️',
-          type: 'postback',
-          payload: 'GET_WEATHER',
-        },
-      ]);
+      await chat.sendMessage(
+        'Здравей! Аз съм Алекс и ще съм твоя персонален асистент!'
+      );
       break;
   }
 });
