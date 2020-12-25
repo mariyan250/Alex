@@ -8,6 +8,7 @@ const bot = new Bot({
   PORT: process.env.PORT,
 });
 
+// Get started
 bot.on('postback', async (event, chat) => {
   const { payload } = event.postback;
 
@@ -18,14 +19,6 @@ bot.on('postback', async (event, chat) => {
   }
 });
 
-// Weather
-bot.listen(dictionary.requests.weather, async (event, chat) => {
-  await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
-});
-
-// Wikipedia
-bot.listen('search', async (event, chat) => {});
-
 // Greetings
 bot.listen(dictionary.greetings, async (event, chat) => {
   await chat.sendMessage(
@@ -34,3 +27,11 @@ bot.listen(dictionary.greetings, async (event, chat) => {
     )}`
   );
 });
+
+// Weather
+bot.listen(dictionary.requests.weather, async (event, chat) => {
+  await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
+});
+
+// Wikipedia
+bot.listen('search', async (event, chat) => {});
