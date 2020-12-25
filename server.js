@@ -32,6 +32,3 @@ bot.listen(dictionary.greetings, async (event, chat) => {
 bot.listen(dictionary.requests.weather, async (event, chat) => {
   await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
 });
-
-// Wikipedia
-bot.listen('search', async (event, chat) => {});
