@@ -28,6 +28,15 @@ bot.listen(dictionary.greetings, async (event, chat) => {
   );
 });
 
+// Functionalities
+bot.listen(dictionary.requests.functionalities, async (event, chat) => {
+  await chat.sendMessage(
+    `${getRandom(dictionary.responses.functionalities)} ${getRandom(
+      dictionary.emoticons.problem
+    )}`
+  );
+});
+
 // Weather
 bot.listen(dictionary.requests.weather, async (event, chat) => {
   await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
