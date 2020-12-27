@@ -44,5 +44,6 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 });
 
 bot.listen('search', async (event, chat) => {
-  console.log(await getWikipedia('Elon Musk')[2]);
+  const data = await getWikipedia('Elon Musk');
+  console.log(data[2]);
 });
