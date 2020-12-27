@@ -2,6 +2,7 @@ import { Bot } from './lib/Bot.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
 import { getWeather } from './services/weather.js';
+import { getWikipedia } from './services/wikipedia.js';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -40,4 +41,8 @@ bot.listen(dictionary.requests.functionalities, async (event, chat) => {
 // Weather
 bot.listen(dictionary.requests.weather, async (event, chat) => {
   await chat.sendMessage(parseWeather(await getWeather('Smolyan')));
+});
+
+bot.listen('search', async (event, chat) => {
+  console.log(getWikipedia('Elon Musk'));
 });
