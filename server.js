@@ -45,5 +45,7 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 
 bot.listen('search', async (event, chat) => {
   const data = await getWikipedia('Elon');
-  console.log(data[3][1]);
+  if (data[3][1]) {
+    await chat.sendMessage(data[3][1]);
+  }
 });
