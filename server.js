@@ -39,5 +39,5 @@ bot.listen(dictionary.requests.functionalities, async (event, chat) => {
 
 // Weather
 bot.listen(dictionary.requests.weather, async (event, chat) => {
-  await chat.sendMessage(parseWeather(await getWeather('Rudozem')));
+  await chat.sendMessage(parseWeather(await getWeather('Smolyan')));
 });
