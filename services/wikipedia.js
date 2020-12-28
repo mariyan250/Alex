@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
 export const getWikipedia = async (query) => {
-  const url = `https://bg.wikipedia.org/w/api.php?action=opensearch&explaintext&search=${query}&format=json`;
+  const url = `https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&exintro&explaintext&redirects=1&titles=${query}`;
 
   try {
     const response = await fetch(url);
