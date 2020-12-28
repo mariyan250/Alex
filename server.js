@@ -47,7 +47,7 @@ bot.listen('Какво е', async (event, chat) => {
   const message = event.message.text.split('Какво е')[1].split(' ').join('+');
   const data = await getWikipedia(message);
   Object.entries(data.query.pages).map(([key, val]) => {
-    console.log(val.extract);
+    await chat.sendMessage(val.extract)
   });
 });
 
@@ -55,6 +55,6 @@ bot.listen('Кой е', async (event, chat) => {
   const message = event.message.text.split('Кой е')[1];
   const data = await getWikipedia(message);
   Object.entries(data.query.pages).map(([key, val]) => {
-    console.log(val.extract);
+    await chat.sendMessage(val.extract)
   });
 });
