@@ -34,5 +34,5 @@ export const parseWeather = ({ temp, feels_like, weather }) => {
       break;
   }
 
-  return `The weather is ${weather} ${icon}\nTemperature is ${temp} degrees and feels like ${feels_like}🌡.`;
+  return `The weather is ${weather.toLowerCase()} ${icon}\nTemperature is ${temp} degrees and feels like ${feels_like}🌡.`;
 };
