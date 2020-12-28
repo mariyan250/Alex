@@ -43,7 +43,7 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
   await chat.sendMessage(parseWeather(await getWeather('Smolyan')));
 });
 
-bot.listen('search', (event, chat) => {
+bot.listen('search', async (event, chat) => {
   const data = await getWikipedia('Elon');
   console.log(data.query.pages);
 });
