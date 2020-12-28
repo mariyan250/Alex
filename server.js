@@ -45,5 +45,7 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 
 bot.listen('search', async (event, chat) => {
   const data = await getWikipedia('Car');
-  console.log(data.query.pages['0'].extract);
+  Object.entries(data.query.pages).map(([key, val]) => {
+    console.log(val.extract);
+  });
 });
