@@ -49,6 +49,7 @@ bot.listen('What is', async (event, chat) => {
     .split(' ')
     .join('%20');
   const data = await getWikipedia(message);
+  console.log(data);
   Object.entries(data.query.pages).map(async ([key, val]) => {
     await chat.sendMessage(val.extract);
   });
@@ -57,6 +58,7 @@ bot.listen('What is', async (event, chat) => {
 bot.listen('Who is', async (event, chat) => {
   const message = event.message.text.split('Who is ')[1].split(' ').join('%20');
   const data = await getWikipedia(message);
+  console.log(data);
   Object.entries(data.query.pages).map(async ([key, val]) => {
     await chat.sendMessage(val.extract);
   });
