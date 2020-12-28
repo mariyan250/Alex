@@ -1,21 +1,21 @@
 export const dictionary = {
-  greetings: ['здравей', 'здрасти', 'здравейте', 'хей', 'hey', 'hi', 'hello'],
+  greetings: ['hey', 'hello', 'hi', 'yo'],
   requests: {
-    time: ['колко е часа', 'колко е часът', 'час?', 'time'],
-    weather: ['какво е времето', 'как е времето'],
-    functionalities: ['какво можеш', 'какво правиш'],
+    time: ["what's the time", 'time'],
+    weather: ["what's the weather", 'what is the weather', 'weather'],
+    functionalities: ['what u do', 'what u can do', 'what do you do'],
   },
   responses: {
-    start: ['Здравей! Аз съм Алекс и ще бъда твоя асистент! 🦸‍♂️'],
-    greetings: ['Здравей!', 'Здрасти!', 'Хей!'],
+    start: ["Hey! I'm Alex and i will be your personal assistant! 🦸‍♂️"],
+    greetings: ['Hey!', 'Hello!', 'Hi!'],
     functionalities: [
-      'За момента мога единствено да те поздравявам и отговарям на въпросите ти свързани с времето..',
+      'I can tell you greetings, weather and some information if you ask me about.',
     ],
-    time: ['Часът е', 'Точен час:', 'Час: '],
+    time: ['The time is ', 'Exact time:', 'Time: '],
     problems: {
-      understand: ['Съжалявам, не мога да разбера това което си написал..'],
+      understand: ["Sorry, i can't understand you.."],
       weather: [
-        'Съжалявам, не можах да проверя какво е времето, опитай малко по-късно',
+        'Sorry i get some troubles checking the weather now, please try again later..',
       ],
     },
   },
