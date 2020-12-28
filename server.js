@@ -50,8 +50,7 @@ bot.on('message', async (event, chat) => {
     event.message.text.includes('Какво е') ||
     event.message.text.includes('какво е')
   ) {
-    message = event.message.text.split(/[Кой е?]/g);
+    const data = await getWikipedia('Elon');
+    console.log(data.query.pages);
   }
-  const data = await getWikipedia('Elon');
-  console.log(data.query.pages);
 });
