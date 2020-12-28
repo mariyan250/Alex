@@ -43,16 +43,16 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
   await chat.sendMessage(parseWeather(await getWeather('Smolyan')));
 });
 
-bot.listen('Какво е', async (event, chat) => {
-  const message = event.message.text.split('Какво е ')[1].split(' ').join('+');
+bot.listen('What is', async (event, chat) => {
+  const message = event.message.text.split('What is ')[1].split(' ').join('+');
   const data = await getWikipedia(message);
   Object.entries(data.query.pages).map(async ([key, val]) => {
     await chat.sendMessage(val.extract);
   });
 });
 
-bot.listen('Кой е', async (event, chat) => {
-  const message = event.message.text.split('Кой е ')[1].split(' ').join('+');
+bot.listen('Who is', async (event, chat) => {
+  const message = event.message.text.split('Who is ')[1].split(' ').join('+');
   const data = await getWikipedia(message);
   Object.entries(data.query.pages).map(async ([key, val]) => {
     await chat.sendMessage(val.extract);
