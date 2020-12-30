@@ -2,7 +2,8 @@ import { Bot } from './lib/Bot.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
 import { getWeather } from './services/weather.js';
-import { getWikipedia } from './services/wikipedia.js';
+import wiki from 'wikijs';
+import WikiJS from 'wikijs';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -44,19 +45,11 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 });
 
 bot.listen('What is', async (event, chat) => {
-  const message = event.message.text.toLowerCase().split('what is ')[1];
-  const data = await getWikipedia(message);
+  const { text } = event.message;
+  const data = await wiki().search(text, 1);
   console.log(data);
-  Object.entries(data.query.pages).map(async ([key, val]) => {
-    await chat.sendMessage(val.extract);
-  });
 });
 
 bot.listen('Who is', async (event, chat) => {
-  const message = event.message.text.toLowerCase().split('who is ')[1];
-  const data = await getWikipedia(message);
-  console.log(data);
-  Object.entries(data.query.pages).map(async ([key, val]) => {
-    await chat.sendMessage(val.extract);
-  });
+  const { text } = event.message;
 });
