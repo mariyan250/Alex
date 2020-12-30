@@ -51,7 +51,7 @@ bot.listen('What is', async (event, chat) => {
     const summary = await data.summary();
     const images = await data.images();
 
-    console.log(images[0]);
+    await chat.sendMessage(images[0].url);
     await chat.sendMessage(summary.extract);
   } catch (error) {
     console.log(error);
