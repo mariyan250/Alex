@@ -48,7 +48,8 @@ bot.listen('What is', async (event, chat) => {
 
   try {
     const data = await wiki.page(query);
-    console.log(await data.summary().extract);
+    const summary = await data.summary();
+    console.log(summary.extract);
   } catch (error) {
     console.log(error);
   }
