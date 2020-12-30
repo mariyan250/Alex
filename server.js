@@ -45,10 +45,8 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 
 bot.listen('What is', async (event, chat) => {
   const query = event.message.text.toLowerCase().split('what is')[1];
-  wiki()
-    .page('Batman')
-    .then((page) => page.info('alterEgo'))
-    .then(console.log); // Bruce Wayne
+  const obj = wiki();
+  console.log(obj);
 });
 
 bot.listen('Who is', async (event, chat) => {
