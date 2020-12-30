@@ -45,11 +45,11 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 });
 
 bot.listen('What is', async (event, chat) => {
-  const { text } = event.message;
+  const query = event.message.text.toLowerCase().split('what is')[1];
   const data = await wiki().search(text, 1);
   console.log(data);
 });
 
 bot.listen('Who is', async (event, chat) => {
-  const { text } = event.message;
+  const query = event.message.text.toLowerCase().split('what is')[1];
 });
