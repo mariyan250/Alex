@@ -49,7 +49,7 @@ bot.listen('What is', async (event, chat) => {
   try {
     const data = await wiki.page(query);
     const summary = await data.summary();
-    await chat.sendMessage(summary.extract);
+    await chat.sendMessage(`${data.images}\n${summary.extract}`);
   } catch (error) {
     console.log(error);
   }
