@@ -47,7 +47,7 @@ bot.listen('What is', async (event, chat) => {
   const query = event.message.text.toLowerCase().split('what is')[1];
 
   try {
-    const data = await wiki.prototype().search(query, 1);
+    const data = wiki();
     console.log(data);
   } catch (error) {
     console.log(error);
