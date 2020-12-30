@@ -48,7 +48,10 @@ bot.listen(dictionary.requests.weather, async (event, chat) => {
 });
 
 bot.listen('What is', async (event, chat) => {
-  if (asking.weather) return;
+  if (asking.weather) {
+    asking.weather = false;
+    return;
+  }
 
   const query = event.message.text.toLowerCase().split('what is')[1];
 
