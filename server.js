@@ -2,7 +2,7 @@ import { Bot } from './lib/Bot.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
 import { getWeather } from './services/weather.js';
-import WikiJS, * as wiki from 'wikijs';
+import wiki from 'wikipedia';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -47,7 +47,7 @@ bot.listen('What is', async (event, chat) => {
   const query = event.message.text.toLowerCase().split('what is')[1];
 
   try {
-    const data = WikiJS();
+    const data = await wiki.page(query);
     console.log(data);
   } catch (error) {
     console.log(error);
