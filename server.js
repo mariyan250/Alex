@@ -51,7 +51,7 @@ bot.listen('What is', async (event, chat) => {
     const summary = await data.summary();
     const images = await data.images();
 
-    for await (image of images) {
+    for await (const image of images) {
       await chat.sendMessage(image);
     }
 
