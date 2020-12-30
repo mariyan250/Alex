@@ -50,7 +50,8 @@ bot.listen('What is', async (event, chat) => {
     const data = await wiki.page(query);
     const summary = await data.summary();
     const images = await data.images();
-    await chat.sendImage(images[0].url);
+    const att = await chat.sendImage(images[0].url);
+    console.log(att);
     await chat.sendMessage(summary.extract);
   } catch (error) {
     console.log(error);
