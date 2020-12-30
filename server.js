@@ -49,8 +49,6 @@ bot.listen('What is', async (event, chat) => {
   try {
     const data = await wiki.page(query);
     const summary = await data.summary();
-    const images = await data.images();
-    await chat.sendImage(images[0].url);
     await chat.sendMessage(summary.extract);
   } catch (error) {
     console.log(error);
