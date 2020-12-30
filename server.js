@@ -1,8 +1,11 @@
+import wiki from 'wikipedia';
+
 import { Bot } from './lib/Bot.js';
 import { dictionary } from './dictionary.js';
 import { getRandom, parseWeather } from './utils/functions.js';
 import { getWeather } from './services/weather.js';
-import wiki from 'wikipedia';
+
+const asking = { weather: false };
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -40,10 +43,13 @@ bot.listen(dictionary.requests.functionalities, async (event, chat) => {
 
 // Weather
 bot.listen(dictionary.requests.weather, async (event, chat) => {
+  asking.weather = true;
   await chat.sendMessage(parseWeather(await getWeather('Smolyan')));
 });
 
 bot.listen('What is', async (event, chat) => {
+  if (asking.weather) return;
+
   const query = event.message.text.toLowerCase().split('what is')[1];
 
   try {
