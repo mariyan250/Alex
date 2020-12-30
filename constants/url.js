@@ -1,5 +1,3 @@
-import { text } from 'express';
-
 const GRAPH_URL = 'https://graph.facebook.com';
 
 export const URL = `${GRAPH_URL}/v9.0/me/messages?access_token=${process.env.PAGE_ACCESS_TOKEN}`;
