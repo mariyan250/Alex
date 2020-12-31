@@ -1,10 +1,4 @@
 export const dictionary = {
-  greetings: ['hey', 'hello', 'hi', 'yo'],
-  requests: {
-    time: ["what's the time", 'time'],
-    weather: ["what's the weather", 'what is the weather', 'weather'],
-    functionalities: ['what u do', 'what u can do', 'what do you do'],
-  },
   responses: {
     start: ["Hey! I'm Alex and i will be your personal assistant! 🦸‍♂️"],
     greetings: ['Hey!', 'Hello!', 'Hi!'],
