@@ -1,5 +1,5 @@
 import { Bot } from './lib/Bot.js';
-import YouTube from 'youtube-sr';
+import { YouTube } from 'youtube-sr';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
