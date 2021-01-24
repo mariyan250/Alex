@@ -34,5 +34,12 @@ bot.on('message', async (event, chat) => {
         io.emit('youtube link', res[0].id);
       })
       .catch((err) => console.log(err));
+  } else if (text.toLowerCase().includes('покажи')) {
+    io.emit('video controls', 'show');
+  } else if (
+    text.toLowerCase().includes('скрии') ||
+    text.toLowerCase().includes('скрий')
+  ) {
+    io.emit('video controls', 'hide');
   }
 });
