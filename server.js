@@ -25,7 +25,7 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'red');
   } else if (text.toLowerCase().includes('дискотека')) {
     io.emit('color', 'disco');
-  } else if (text.toLowerCase().includes('спри')) {
+  } else if (text.toLowerCase().includes('стоп')) {
     io.emit('color', 'stop');
   }
 });
