@@ -26,5 +26,7 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'disco');
   } else if (text.toLowerCase().includes('стоп')) {
     io.emit('color', 'stop');
+  } else if (text.toLowerCase().includes('порно')) {
+    io.emit('redirect', 'https://pornhub.com');
   }
 });
