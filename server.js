@@ -10,6 +10,7 @@ let io;
 
 bot.on('socket connection', (socket) => {
   io = socket;
+  console.log(socket);
 });
 
 // Messages
