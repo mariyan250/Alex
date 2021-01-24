@@ -10,6 +10,6 @@ bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
   if (['hey', 'hi', 'hello'].includes(text.toLowerCase())) {
-    await chat.sendMessage('Hello!');
+    await chat.sendMessage('Hello, sir!');
   }
 });
