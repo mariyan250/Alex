@@ -10,7 +10,6 @@ let io;
 
 bot.on('socket connection', (socket) => {
   io = socket;
-  console.log(socket);
 });
 
 // Messages
@@ -27,5 +26,6 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'disco');
   } else if (text.toLowerCase().includes('стоп')) {
     io.emit('color', 'stop');
+    console.log('STOP!');
   }
 });
