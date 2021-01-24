@@ -23,5 +23,7 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'blue');
   } else if (text.toLowerCase().includes('червено')) {
     io.emit('color', 'red');
+  } else if (text.toLowerCase().includes('дискотека')) {
+    io.emit('color', 'disco');
   }
 });
