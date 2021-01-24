@@ -26,6 +26,5 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'disco');
   } else if (text.toLowerCase().includes('стоп')) {
     io.emit('color', 'stop');
-    console.log('STOP!');
   }
 });
