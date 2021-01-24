@@ -1,4 +1,5 @@
 import { Bot } from './lib/Bot.js';
+import YouTube from 'youtube-sr';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -26,11 +27,8 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'disco');
   } else if (text.toLowerCase().includes('стоп')) {
     io.emit('color', 'stop');
-  } else if (text.toLowerCase().includes('порно')) {
-    io.emit('redirect', 'https://pornhub.com');
-  } else if (text.toLowerCase().includes('ляво')) {
-    io.emit('position', 'left');
-  } else if (text.toLowerCase().includes('дясно')) {
-    io.emit('position', 'right');
+  } else if (text.toLowerCase().includes('пусни')) {
+    const music = text.toLowerCase().split('пусни')[1];
+    YouTube.search(music, { limit: 1 }).then((res) => console.log(res));
   }
 });
