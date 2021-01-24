@@ -30,7 +30,9 @@ bot.on('message', async (event, chat) => {
   } else if (text.toLowerCase().includes('пусни')) {
     const music = text.toLowerCase().split('пусни')[1];
     YouTube.search(music, { limit: 1 })
-      .then((res) => console.log(res))
+      .then((res) => {
+        io.emit('youtube link', res[0].id);
+      })
       .catch((err) => console.log(err));
   }
 });
