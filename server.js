@@ -29,6 +29,8 @@ bot.on('message', async (event, chat) => {
     io.emit('color', 'stop');
   } else if (text.toLowerCase().includes('пусни')) {
     const music = text.toLowerCase().split('пусни')[1];
-    YouTube.search(music, { limit: 1 }).then((res) => console.log(res));
+    YouTube.search(music, { limit: 1 })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
 });
