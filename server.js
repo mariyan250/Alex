@@ -2,7 +2,6 @@ import { Bot } from './lib/Bot.js';
 import { YouTube } from 'youtube-sr';
 import { checkWord } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
-import { Body } from 'node-fetch';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -49,13 +48,13 @@ bot.on('message', async (event, chat) => {
     io.emit('video controls', 'hide');
   }
 
-  if (checkWord(dictionary.help, text)) {
-    try {
-      await chat.sendMessage('');
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // if (checkWord(dictionary.help, text)) {
+  //   try {
+  //     await chat.sendMessage('');
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   // if (checkWord(dictionary.colors, text)) {
   //   if (text.toLowerCase().includes('червено')) {
