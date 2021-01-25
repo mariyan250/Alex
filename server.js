@@ -66,10 +66,7 @@ bot.on('message', async (event, chat) => {
     text.toLowerCase().includes('час')
   ) {
     io.emit('hours', 'show');
-  } else if (
-    text.toLowerCase().includes('скрий часа') ||
-    text.toLowerCase().includes('скрии часа')
-  ) {
+  } else if (text.toLowerCase().includes('скрий часа')) {
     io.emit('hours', 'hide');
   }
 });
