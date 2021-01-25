@@ -17,10 +17,12 @@ bot.on('socket connection', (socket) => {
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
-  console.log(text);
-
   if (checkWord(dictionary.greetings, text)) {
-    await chat.sendMessage('Здравей!');
+    try {
+      await chat.sendMessage('Здравей!');
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   console.log(checkWord(dictionary.music.play, text));
