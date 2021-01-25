@@ -1,3 +1,11 @@
 export const checkWord = (dictionary, word) => {
-  return dictionary.includes(word.toLowerCase());
+  let result;
+
+  dictionary.map((x) => {
+    if (word.includes(x)) {
+      result = true;
+    }
+  });
+
+  return result;
 };
