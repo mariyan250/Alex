@@ -68,5 +68,9 @@ bot.on('message', async (event, chat) => {
     if (text.toLowerCase().includes('бяло')) {
       io.emit('color', 'white');
     }
+
+    if (text.toLowerCase().includes('диско')) {
+      io.emit('color', 'disko');
+    }
   }
 });
