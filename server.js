@@ -70,7 +70,7 @@ bot.on('message', async (event, chat) => {
     }
 
     if (text.toLowerCase().includes('диско')) {
-      io.emit('color', 'disko');
+      io.emit('color', 'disco');
     }
   }
 });
