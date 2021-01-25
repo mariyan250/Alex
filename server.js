@@ -48,33 +48,25 @@ bot.on('message', async (event, chat) => {
     io.emit('video controls', 'hide');
   }
 
-  // if (checkWord(dictionary.help, text)) {
-  //   try {
-  //     await chat.sendMessage('');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  if (checkWord(dictionary.colors, text)) {
+    if (text.toLowerCase().includes('червено')) {
+      io.emit('color', 'red');
+    }
 
-  // if (checkWord(dictionary.colors, text)) {
-  //   if (text.toLowerCase().includes('червено')) {
-  //     io.emit('color', 'red');
-  //   }
+    if (text.toLowerCase().includes('синьо')) {
+      io.emit('color', 'blue');
+    }
 
-  //   if (text.toLowerCase().includes('синьо')) {
-  //     io.emit('color', 'blue');
-  //   }
+    if (text.toLowerCase().includes('зелено')) {
+      io.emit('color', 'green');
+    }
 
-  //   if (text.toLowerCase().includes('зелено')) {
-  //     io.emit('color', 'green');
-  //   }
+    if (text.toLowerCase().includes('черно')) {
+      io.emit('color', 'black');
+    }
 
-  //   if (text.toLowerCase().includes('черно')) {
-  //     io.emit('color', 'black');
-  //   }
-
-  //   if (text.toLowerCase().includes('бяло')) {
-  //     io.emit('color', 'white');
-  //   }
-  // }
+    if (text.toLowerCase().includes('бяло')) {
+      io.emit('color', 'white');
+    }
+  }
 });
