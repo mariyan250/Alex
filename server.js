@@ -2,6 +2,7 @@ import { Bot } from './lib/Bot.js';
 import { YouTube } from 'youtube-sr';
 import { checkWord } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
+import { Body } from 'node-fetch';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -46,5 +47,41 @@ bot.on('message', async (event, chat) => {
 
   if (checkWord(dictionary.music.hide, text)) {
     io.emit('video controls', 'hide');
+  }
+
+  if (checkWord(dictionary.help, text)) {
+    try {
+      await chat.sendMessage('');
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  if (checkWord(dictionary.colors, text)) {
+    try {
+      switch (dictionary.colors) {
+        case 'червено':
+          body.style.background = 'red';
+          break;
+
+        case 'синьо':
+          body.style.background = 'blue';
+          break;
+
+        case 'зелено':
+          body.style.background = 'green';
+          break;
+
+        case 'черно':
+          body.style.background = 'black';
+          break;
+
+        case 'бяло':
+          body.style.background = 'white';
+          break;
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 });

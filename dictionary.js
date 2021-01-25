@@ -11,4 +11,5 @@ export const dictionary = {
     show: ['покажи час'],
     hide: ['скрий часа', 'скрии часа'],
   },
+  help: ['помощ'],
 };
