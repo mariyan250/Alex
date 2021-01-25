@@ -1,3 +1,3 @@
-export const checkWord = (dictionary, word) => {
-  return dictionary.some((sentence) => word.includes(sentence));
+export const checkWord = (dictionary, sentence) => {
+  return dictionary.some((word) => sentence.includes(word));
 };
