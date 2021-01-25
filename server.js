@@ -57,8 +57,19 @@ bot.on('message', async (event, chat) => {
     text.toLowerCase().includes('скрии') ||
     text.toLowerCase().includes('скрий') ||
     text.toLowerCase().includes('skrii') ||
-    text.toLowerCase().includes('skri')
+    text.toLowerCase().includes('skri ')
   ) {
     io.emit('video controls', 'hide');
+  } else if (
+    text.toLowerCase().includes('покажи часа') ||
+    text.toLowerCase().includes('покажи час') ||
+    text.toLowerCase().includes('час')
+  ) {
+    io.emit('hours', 'show');
+  } else if (
+    text.toLowerCase().includes('скрий часа') ||
+    text.toLowerCase().includes('скрии часа')
+  ) {
+    io.emit('hours', 'hide');
   }
 });
