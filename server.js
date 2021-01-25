@@ -70,7 +70,6 @@ bot.on('message', async (event, chat) => {
     text.toLowerCase().includes('скрий часа') ||
     text.toLowerCase().includes('скрии часа')
   ) {
-    console.log('mariqnnn');
     io.emit('hours', 'hide');
   }
 });
