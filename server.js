@@ -23,10 +23,12 @@ bot.on('message', async (event, chat) => {
     await chat.sendMessage('Здравей!');
   }
 
-  if (checkWord(dictionary.music.play, text)) {
-    const music = text.toLowerCase().split('пусни')[1];
+  console.log(checkWord(dictionary.music.play, text));
 
-    console.log(music);
+  if (checkWord(dictionary.music.play, text)) {
+    console.log('in');
+
+    const music = text.toLowerCase().split('пусни')[1];
 
     try {
       const data = await YouTube.search(music, { limit: 1 });
