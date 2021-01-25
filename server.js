@@ -19,7 +19,7 @@ bot.on('message', async (event, chat) => {
 
   if (['hey', 'hi', 'hello'].includes(text.toLowerCase())) {
     await chat.sendMessage('Hello, sir!');
-  } else if (text.toLowerCase().includes('синьо')) {
+  } else if (text.toLowerCase().includes('син цвят')) {
     io.emit('color', 'blue');
   } else if (text.toLowerCase().includes('червено')) {
     io.emit('color', 'red');
