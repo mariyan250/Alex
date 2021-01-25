@@ -25,8 +25,6 @@ bot.on('message', async (event, chat) => {
     }
   }
 
-  console.log(checkWord(dictionary.music.play, text));
-
   if (checkWord(dictionary.music.play, text)) {
     const music = text.toLowerCase().split('пусни')[1];
 
@@ -36,5 +34,17 @@ bot.on('message', async (event, chat) => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  if (checkWord(dictionary.music.stop, text)) {
+    io.emit('color', 'stop');
+  }
+
+  if (checkWord(dictionary.music.show, text)) {
+    io.emit('video controls', 'show');
+  }
+
+  if (checkWord(dictionary.music.hide, text)) {
+    io.emit('video controls', 'hide');
   }
 });
