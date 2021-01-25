@@ -73,7 +73,7 @@ bot.on('message', async (event, chat) => {
       io.emit('color', 'disco');
     }
 
-    if (text.toLowerCase().includes('час')) {
+    if (text.toLowerCase().includes('покажи часа')) {
       io.emit('hours', 'show');
     }
 
