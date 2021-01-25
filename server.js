@@ -58,30 +58,24 @@ bot.on('message', async (event, chat) => {
   }
 
   if (checkWord(dictionary.colors, text)) {
-    try {
-      switch (dictionary.colors) {
-        case 'червено':
-          body.style.background = 'red';
-          break;
+    if (text.toLowerCase().includes('червено')) {
+      io.emit('color', 'red');
+    }
 
-        case 'синьо':
-          body.style.background = 'blue';
-          break;
+    if (text.toLowerCase().includes('синьо')) {
+      io.emit('color', 'blue');
+    }
 
-        case 'зелено':
-          body.style.background = 'green';
-          break;
+    if (text.toLowerCase().includes('зелено')) {
+      io.emit('color', 'green');
+    }
 
-        case 'черно':
-          body.style.background = 'black';
-          break;
+    if (text.toLowerCase().includes('черно')) {
+      io.emit('color', 'black');
+    }
 
-        case 'бяло':
-          body.style.background = 'white';
-          break;
-      }
-    } catch (error) {
-      console.log(error);
+    if (text.toLowerCase().includes('бяло')) {
+      io.emit('color', 'white');
     }
   }
 });
