@@ -6,6 +6,8 @@ export const dictionary = {
     stop: ['спри', 'стоп'],
     show: ['покажи'],
     hide: ['скрий', 'скрии'],
+    next: ['следваща'],
+    previous: ['предишна'],
   },
   hour: {
     show: ['покажи час'],

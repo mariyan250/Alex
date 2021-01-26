@@ -26,6 +26,11 @@ bot.on('message', async (event, chat) => {
   }
 
   if (checkWord(dictionary.music.play, text)) {
+    if (text.toLowerCase() === 'пусни') {
+      io.emit('video controls', 'play');
+      return;
+    }
+
     const music = text.toLowerCase().split('пусни')[1];
 
     try {
@@ -37,7 +42,7 @@ bot.on('message', async (event, chat) => {
   }
 
   if (checkWord(dictionary.music.stop, text)) {
-    io.emit('color', 'stop');
+    io.emit('video controls', 'stop');
   }
 
   if (checkWord(dictionary.music.show, text)) {
@@ -46,6 +51,14 @@ bot.on('message', async (event, chat) => {
 
   if (checkWord(dictionary.music.hide, text)) {
     io.emit('video controls', 'hide');
+  }
+
+  if (checkWord(dictionary.music.next, text)) {
+    io.emit('video controls', 'next');
+  }
+
+  if (checkWord(dictionary.music.previous, text)) {
+    io.emit('video controls', 'previous');
   }
 
   if (checkWord(dictionary.colors, text)) {
