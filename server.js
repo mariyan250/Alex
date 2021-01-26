@@ -8,7 +8,7 @@ const bot = new Bot({
   PORT: process.env.PORT,
 });
 
-// Real time connection
+// Socket
 bot.on('socket connection', (socket) => {
   global.io = socket;
 });
@@ -51,14 +51,6 @@ bot.on('message', async (event, chat) => {
 
   if (checkWord(dictionary.music.hide, text)) {
     io.emit('video controls', 'hide');
-  }
-
-  if (checkWord(dictionary.music.next, text)) {
-    io.emit('video controls', 'next');
-  }
-
-  if (checkWord(dictionary.music.previous, text)) {
-    io.emit('video controls', 'previous');
   }
 
   if (checkWord(dictionary.colors, text)) {
