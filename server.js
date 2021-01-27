@@ -60,6 +60,7 @@ bot.on('message', async (event, chat) => {
 
   if (checkWord(dictionary.music.volume, text)) {
     io.emit('video volume', Number(text));
+    return;
   }
 
   switch (text.toLowerCase()) {
