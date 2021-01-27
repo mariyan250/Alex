@@ -20,8 +20,10 @@ bot.on('message', async (event, chat) => {
     }
   } else if (text.toLowerCase() === 'музика') {
     io.emit('video controls', 'start');
+    await chat.sendMessage('Режим "Музика" активиран!');
   } else if (text.toLowerCase() === 'спри музиката') {
     io.emit('video controls', 'stop music');
+    await chat.sendMessage('Режим "Музика" деактивиран!');
   } else if (text.toLowerCase() === 'пусни') {
     io.emit('video controls', 'play');
   } else if (
