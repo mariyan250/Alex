@@ -8,11 +8,6 @@ const bot = new Bot({
   PORT: process.env.PORT,
 });
 
-// Socket
-bot.on('socket connection', (socket) => {
-  global.io = socket;
-});
-
 // Messages
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
