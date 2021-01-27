@@ -3,6 +3,8 @@ import { YouTube } from 'youtube-sr';
 import { checkWord } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
 
+let musicMode = true;
+
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
   PORT: process.env.PORT,
@@ -22,8 +24,15 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
-  if (text.toLowerCase() === dictionary.music.start) {
+  if (text.toLowerCase() === 'музика') {
+    musicMode = true;
     io.emit('video controls', 'start');
+    return;
+  }
+
+  if (text.toLowerCase() === 'спри музиката') {
+    musicMode = false;
+    io.emit('video controls', 'stop music');
     return;
   }
 
@@ -87,12 +96,14 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
-  const music = text.toLowerCase();
+  if (musicMode) {
+    const music = text.toLowerCase();
 
-  try {
-    const data = await YouTube.search(music, { limit: 1 });
-    io.emit('youtube link', data[0].id);
-  } catch (error) {
-    console.log(error);
+    try {
+      const data = await YouTube.search(music, { limit: 1 });
+      io.emit('youtube link', data[0].id);
+    } catch (error) {
+      console.log(error);
+    }
   }
 });
