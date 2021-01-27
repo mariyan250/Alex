@@ -18,26 +18,11 @@ bot.on('message', async (event, chat) => {
     } catch (error) {
       console.log(error);
     }
-  } else if (text.toLowerCase() === 'музика') {
-    io.emit('video controls', 'start');
-    await chat.sendMessage('Режим "Музика" активиран!');
-  } else if (text.toLowerCase() === 'спри музиката') {
-    io.emit('video controls', 'stop music');
-    await chat.sendMessage('Режим "Музика" деактивиран!');
-  } else if (text.toLowerCase() === 'пусни') {
-    io.emit('video controls', 'play');
-  } else if (
-    text.toLowerCase() === 'спри' ||
-    text.toLowerCase() === 'стоп' ||
-    text.toLowerCase() === 'пауза'
-  ) {
-    io.emit('video controls', 'stop');
+
     return;
-  } else if (text.toLowerCase() === 'покажи') {
-    io.emit('video controls', 'show');
-  } else if (text.toLowerCase() === 'скрий') {
-    io.emit('video controls', 'hide');
-  } else if (checkWord(dictionary.colors, text)) {
+  }
+
+  if (checkWord(dictionary.colors, text)) {
     if (text.toLowerCase().includes('червено')) {
       io.emit('color', 'red');
     }
@@ -69,14 +54,49 @@ bot.on('message', async (event, chat) => {
     if (text.toLowerCase().includes('скрии часа')) {
       io.emit('hours', 'hide');
     }
-  } else {
-    const music = text.toLowerCase();
 
-    try {
-      const data = await YouTube.search(music, { limit: 1 });
-      io.emit('youtube link', data[0].id);
-    } catch (error) {
-      console.log(error);
-    }
+    return;
+  }
+
+  switch (text.toLowerCase()) {
+    case 'музика':
+    case 'пусни музика':
+      io.emit('video controls', 'start');
+      await chat.sendMessage('Режим "Музика" активиран!');
+      break;
+
+    case 'спри музиката':
+      io.emit('video controls', 'stop music');
+      await chat.sendMessage('Режим "Музика" деактивиран!');
+      break;
+
+    case 'пусни':
+      io.emit('video controls', 'play');
+      break;
+
+    case 'спри':
+    case 'стоп':
+    case 'пауза':
+      io.emit('video controls', 'stop');
+      break;
+
+    case 'покажи':
+      io.emit('video controls', 'show');
+      break;
+
+    case 'скрий':
+      io.emit('video controls', 'hide');
+      break;
+
+    default:
+      const music = text.toLowerCase();
+
+      try {
+        const data = await YouTube.search(music, { limit: 1 });
+        io.emit('youtube link', data[0].id);
+      } catch (error) {
+        console.log(error);
+      }
+      break;
   }
 });
