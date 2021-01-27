@@ -58,6 +58,10 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
+  if (checkWord(dictionary.music.volume, Number(text))) {
+    io.emit('video volume', Number(text));
+  }
+
   switch (text.toLowerCase()) {
     case 'музика':
     case 'пусни музика':
@@ -97,6 +101,7 @@ bot.on('message', async (event, chat) => {
       } catch (error) {
         console.log(error);
       }
+
       break;
   }
 });
