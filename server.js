@@ -18,34 +18,37 @@ bot.on('message', async (event, chat) => {
     } catch (error) {
       console.log(error);
     }
+
+    return;
   }
 
-  if (checkWord(dictionary.music.play, text)) {
-    if (text.toLowerCase() === 'пусни') {
-      io.emit('video controls', 'play');
-      return;
-    }
-
-    const music = text.toLowerCase().split('пусни')[1];
-
-    try {
-      const data = await YouTube.search(music, { limit: 1 });
-      io.emit('youtube link', data[0].id);
-    } catch (error) {
-      console.log(error);
-    }
+  if (text.toLowerCase() === dictionary.music.start) {
+    io.emit('video controls', 'start');
+    return;
   }
 
-  if (checkWord(dictionary.music.stop, text)) {
+  if (text.toLowerCase() === 'пусни') {
+    io.emit('video controls', 'play');
+    return;
+  }
+
+  if (
+    text.toLowerCase() === 'спри' ||
+    text.toLowerCase() === 'стоп' ||
+    text.toLowerCase() === 'пауза'
+  ) {
     io.emit('video controls', 'stop');
+    return;
   }
 
-  if (checkWord(dictionary.music.show, text)) {
+  if (text.toLowerCase() === 'покажи') {
     io.emit('video controls', 'show');
+    return;
   }
 
-  if (checkWord(dictionary.music.hide, text)) {
+  if (text.toLowerCase() === 'скрий') {
     io.emit('video controls', 'hide');
+    return;
   }
 
   if (checkWord(dictionary.colors, text)) {
@@ -80,5 +83,16 @@ bot.on('message', async (event, chat) => {
     if (text.toLowerCase().includes('скрии часа')) {
       io.emit('hours', 'hide');
     }
+
+    return;
+  }
+
+  const music = text.toLowerCase();
+
+  try {
+    const data = await YouTube.search(music, { limit: 1 });
+    io.emit('youtube link', data[0].id);
+  } catch (error) {
+    console.log(error);
   }
 });
