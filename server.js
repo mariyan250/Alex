@@ -58,7 +58,7 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
-  if (checkWord(dictionary.music.volume, Number(text))) {
+  if (checkWord(dictionary.music.volume, text)) {
     io.emit('video volume', Number(text));
   }
 
