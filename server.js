@@ -22,7 +22,7 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
-  if (checkWord(dictionary.colors, text)) {
+  if (checkWord(dictionary.colors.show, text)) {
     if (text.toLowerCase().includes('червено')) {
       io.emit('color', 'red');
     }
@@ -58,6 +58,10 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
+  if (checkWord(dictionary.colors.hide, text)) {
+    io.emit('display controls', 'hide');
+  }
+
   if (checkWord(dictionary.music.volume, text)) {
     io.emit('video volume', Number(text));
     return;
@@ -87,10 +91,12 @@ bot.on('message', async (event, chat) => {
 
     case 'покажи':
       io.emit('video controls', 'show');
+      io.emit('display controls', 'hide');
       break;
 
     case 'скрий':
       io.emit('video controls', 'hide');
+      io.emit('display controls', 'show');
       break;
 
     default:
