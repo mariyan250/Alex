@@ -105,7 +105,7 @@ bot.on('message', async (event, chat) => {
       break;
 
     case 'тблууу':
-      io.emit('video volume', 100);
+      io.emit('video volume', 10);
       break;
 
     default:
