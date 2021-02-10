@@ -99,6 +99,15 @@ bot.on('message', async (event, chat) => {
       io.emit('display controls', 'show');
       break;
 
+    case 'яла си':
+      io.emit('video volume', 100);
+      await chat.sendMessage('Селям Айлекум');
+      break;
+
+    case 'тблууу':
+      io.emit('video volume', 100);
+      break;
+
     default:
       const music = text.toLowerCase();
 
