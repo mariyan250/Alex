@@ -123,61 +123,7 @@ bot.on('message', async (event, chat) => {
 });
 
 bot.on('app-message', async (text) => {
-  if (checkWord(dictionary.colors.show, text)) {
-    if (text.toLowerCase().includes('червено')) {
-      io.emit('color', 'red');
-    }
-
-    if (text.toLowerCase().includes('синьо')) {
-      io.emit('color', 'blue');
-    }
-
-    if (text.toLowerCase().includes('зелено')) {
-      io.emit('color', 'green');
-    }
-
-    if (text.toLowerCase().includes('черно')) {
-      io.emit('color', 'black');
-    }
-
-    if (text.toLowerCase().includes('бяло')) {
-      io.emit('color', 'white');
-    }
-
-    if (text.toLowerCase().includes('диско')) {
-      io.emit('color', 'disco');
-    }
-
-    if (text.toLowerCase().includes('покажи часа')) {
-      io.emit('hours', 'show');
-    }
-
-    if (text.toLowerCase().includes('скрии часа')) {
-      io.emit('hours', 'hide');
-    }
-
-    return;
-  }
-
-  if (checkWord(dictionary.colors.hide, text)) {
-    io.emit('display controls', 'hide');
-  }
-
-  if (checkWord(dictionary.music.volume, text)) {
-    io.emit('video volume', Number(text));
-    return;
-  }
-
   switch (text.toLowerCase()) {
-    case 'музика':
-    case 'пусни музика':
-      io.emit('video controls', 'start');
-      break;
-
-    case 'спри музиката':
-      io.emit('video controls', 'stop music');
-      break;
-
     case 'пусни':
       io.emit('video controls', 'play');
       break;
@@ -190,20 +136,10 @@ bot.on('app-message', async (text) => {
 
     case 'покажи':
       io.emit('video controls', 'show');
-      io.emit('display controls', 'hide');
       break;
 
     case 'скрий':
       io.emit('video controls', 'hide');
-      io.emit('display controls', 'show');
-      break;
-
-    case 'яла си':
-      io.emit('video volume', 100);
-      break;
-
-    case 'тблууу':
-      io.emit('video volume', 10);
       break;
 
     default:
@@ -212,6 +148,8 @@ bot.on('app-message', async (text) => {
       try {
         const data = await YouTube.search(music, { limit: 1 });
         io.emit('youtube link', data[0].id);
+        io.emit('video controls', 'start');
+        io.emit('video controls', 'show');
       } catch (error) {
         console.log(error);
       }
