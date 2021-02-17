@@ -150,8 +150,8 @@ bot.on('app-message', async (text) => {
         io.emit('youtube link', data[0].id);
 
         setTimeout(() => {
-          io.emit('video controls', 'show');
           io.emit('video controls', 'start');
+          io.emit('video controls', 'show');
         }, 1000);
       } catch (error) {
         console.log(error);
