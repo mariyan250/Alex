@@ -148,11 +148,9 @@ bot.on('app-message', async (text) => {
 
       try {
         const data = await YouTube.search(music, { limit: 1 });
+        io.emit('video controls', 'start');
         io.emit('youtube link', data[0].id);
-
-        setTimeout(() => {
-          io.emit('video controls', 'show');
-        }, 1000);
+        io.emit('video controls', 'show');
       } catch (error) {
         console.log(error);
       }
