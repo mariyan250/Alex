@@ -18,48 +18,7 @@ bot.on('message', async (event, chat) => {
     } catch (error) {
       console.log(error);
     }
-
     return;
-  }
-
-  if (checkWord(dictionary.colors.show, text)) {
-    if (text.toLowerCase().includes('червено')) {
-      io.emit('color', 'red');
-    }
-
-    if (text.toLowerCase().includes('синьо')) {
-      io.emit('color', 'blue');
-    }
-
-    if (text.toLowerCase().includes('зелено')) {
-      io.emit('color', 'green');
-    }
-
-    if (text.toLowerCase().includes('черно')) {
-      io.emit('color', 'black');
-    }
-
-    if (text.toLowerCase().includes('бяло')) {
-      io.emit('color', 'white');
-    }
-
-    if (text.toLowerCase().includes('диско')) {
-      io.emit('color', 'disco');
-    }
-
-    if (text.toLowerCase().includes('покажи часа')) {
-      io.emit('hours', 'show');
-    }
-
-    if (text.toLowerCase().includes('скрии часа')) {
-      io.emit('hours', 'hide');
-    }
-
-    return;
-  }
-
-  if (checkWord(dictionary.colors.hide, text)) {
-    io.emit('display controls', 'hide');
   }
 
   if (checkWord(dictionary.music.volume, text)) {
@@ -97,15 +56,6 @@ bot.on('message', async (event, chat) => {
     case 'скрий':
       io.emit('video controls', 'hide');
       io.emit('display controls', 'show');
-      break;
-
-    case 'яла си':
-      io.emit('video volume', 100);
-      await chat.sendMessage('Селям Айлекум');
-      break;
-
-    case 'тблууу':
-      io.emit('video volume', 10);
       break;
 
     default:
