@@ -5,9 +5,9 @@ A basic messenger bot build on Node.js.
 ### Get Started
 
 ```bash
-#Install the node modules
+# Install the node modules
 npm install
 
-#To start the server
+# To start the server
 npm start
 ```
