@@ -1,6 +1,6 @@
-# Messenger ChatBot.
+# Alex Assistant (Chat Bot & Server).
 
-A basic messenger bot build on Node.js.
+Personal assistant bot build on Node.js.
 
 ### Get Started
 
