@@ -8,10 +8,9 @@ const bot = new Bot({
   PORT: process.env.PORT,
 });
 
-// Messages
+// Receive messages
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
-  console.log(chat.senderID);
 
   if (checkWord(dictionary.greetings, text)) {
     try {
@@ -65,43 +64,6 @@ bot.on('message', async (event, chat) => {
       try {
         const data = await YouTube.search(music, { limit: 1 });
         io.emit('youtube link', data[0].id);
-      } catch (error) {
-        console.log(error);
-      }
-
-      break;
-  }
-});
-
-// Messages from App
-bot.on('app-message', async (text) => {
-  switch (text.toLowerCase()) {
-    case 'пусни':
-      io.emit('video controls', 'play');
-      break;
-
-    case 'спри':
-    case 'стоп':
-    case 'пауза':
-      io.emit('video controls', 'stop');
-      break;
-
-    case 'покажи':
-      io.emit('video controls', 'show');
-      break;
-
-    case 'скрий':
-      io.emit('video controls', 'hide');
-      break;
-
-    default:
-      const music = text.toLowerCase();
-
-      try {
-        const data = await YouTube.search(music, { limit: 1 });
-        io.emit('video controls', 'start');
-        io.emit('youtube link', data[0].id);
-        io.emit('video controls', 'show');
       } catch (error) {
         console.log(error);
       }
