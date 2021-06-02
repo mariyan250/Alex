@@ -12,6 +12,8 @@ const bot = new Bot({
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
+  console.log(text);
+
   if (checkWord(dictionary.love, text)) {
     try {
       await chat.sendMessage(
