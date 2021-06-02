@@ -12,6 +12,17 @@ const bot = new Bot({
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
+  if (checkWord(dictionary.love, text)) {
+    try {
+      await chat.sendMessage(
+        'Смятам, че на всички вече им е ясно, че обичаш Меди 😉❤️'
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    return;
+  }
+
   if (checkWord(dictionary.greetings, text)) {
     try {
       await chat.sendMessage('Здравей!');

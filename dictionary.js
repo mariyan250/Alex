@@ -13,4 +13,5 @@ export const dictionary = {
     hide: ['скрий часа', 'скрии часа'],
   },
   help: ['помощ'],
+  love: ['обичам'],
 };
