@@ -8,7 +8,7 @@ const bot = new Bot({
   PORT: process.env.PORT,
 });
 
-// Receive messages
+// Message from messenger
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
