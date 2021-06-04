@@ -15,6 +15,13 @@ bot.on('message', async (event, chat) => {
 
   if (text.includes('какво е') || text.includes('Какво е')) {
     const query = event.message.text.toLowerCase().split('какво е')[1];
+
+    if (query.includes('?')) {
+      query = query.split('').pop().join('');
+    }
+
+    console.log(query);
+
     try {
       await wiki.setLang('bg');
       const data = await wiki.page(query, { autoSuggest: true });
