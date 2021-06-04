@@ -17,7 +17,7 @@ bot.on('message', async (event, chat) => {
     const query = event.message.text.toLowerCase().split('какво е')[1];
     try {
       await wiki.setLang('bg');
-      const data = await wiki.page(query);
+      const data = await wiki.page(query, { autoSuggest: true });
       const summary = await data.summary();
       await chat.sendMessage(summary.extract);
     } catch (error) {
