@@ -21,7 +21,7 @@ bot.on('message', async (event, chat) => {
     return;
   }
 
-  if (dictionary.music.volume.includes(text))) {
+  if (dictionary.music.volume.includes(text)) {
     io.emit('video volume', Number(text));
     return;
   }
