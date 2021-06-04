@@ -2,7 +2,7 @@ import { Bot } from './lib/Bot.js';
 import { YouTube } from 'youtube-sr';
 import { checkWord, getRandom } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
-import { getWikipedia } from './services/wikipedia.js';
+import wiki from 'wikipedia';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -13,9 +13,15 @@ const bot = new Bot({
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
-  if (text.includes('какво е')) {
-    const phrase = text.split('какво е')[1];
-    console.log(await getWikipedia(phrase));
+  if (text.includes('Kакво е')) {
+    const query = event.message.text.toLowerCase().split('какво е')[1];
+
+    try {
+      const data = await wiki.page(query);
+      console.log(await data.summary().extract);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   if (checkWord(dictionary.greetings, text)) {
