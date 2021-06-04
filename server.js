@@ -15,12 +15,13 @@ bot.on('message', async (event, chat) => {
 
   if (text.includes('какво е') || text.includes('Какво е')) {
     const query = event.message.text.toLowerCase().split('какво е')[1];
-
-    console.log(query);
-
     try {
       const data = await wiki.page(query);
-      console.log(await data.summary().extract);
+      const summary = await data.summary();
+      const images = await data.images();
+      const att = await chat.sendImage(images[0].url);
+      console.log(att);
+      await chat.sendMessage(summary.extract);
     } catch (error) {
       console.log(error);
     }
