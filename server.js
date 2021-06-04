@@ -14,14 +14,14 @@ bot.on('message', async (event, chat) => {
 
   if (checkWord(dictionary.greetings, text)) {
     try {
-      await chat.sendMessage(getRandom(['Здравей!👋', 'Здрасти!', 'Хей!🙋‍♂️']));
+      await chat.sendMessage(getRandom(['Здравей! 🙋‍♂️', 'Хей! 👋']));
     } catch (error) {
       console.log(error);
     }
     return;
   }
 
-  if (checkWord(dictionary.music.volume, text)) {
+  if (dictionary.music.volume.includes(text))) {
     io.emit('video volume', Number(text));
     return;
   }
