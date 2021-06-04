@@ -2,7 +2,7 @@ import { Bot } from './lib/Bot.js';
 import { YouTube } from 'youtube-sr';
 import { checkWord, getRandom } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
-import { getWikipedia } from './services/wikipedia';
+import { getWikipedia } from './services/wikipedia.js';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
