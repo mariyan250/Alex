@@ -1,6 +1,6 @@
 import { Bot } from './lib/Bot.js';
 import { YouTube } from 'youtube-sr';
-import { checkWord } from './utils/functions.js';
+import { checkWord, getRandom } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
 
 const bot = new Bot({
@@ -12,22 +12,9 @@ const bot = new Bot({
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
-  console.log(text);
-
-  if (checkWord(dictionary.love, text)) {
-    try {
-      await chat.sendMessage(
-        'Смятам, че на всички вече им е ясно, че обичаш Меди 😉❤️'
-      );
-    } catch (error) {
-      console.log(error);
-    }
-    return;
-  }
-
   if (checkWord(dictionary.greetings, text)) {
     try {
-      await chat.sendMessage('Здравей!');
+      await chat.sendMessage(getRandom(['Здравей!', 'Здрасти!', 'Хей!']));
     } catch (error) {
       console.log(error);
     }

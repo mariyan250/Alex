@@ -3,3 +3,7 @@ export const checkWord = (dictionary, sentence) => {
     sentence.toLowerCase().includes(word.toLowerCase())
   );
 };
+
+export const getRandom = (array) => {
+  array[Math.floor(Math.random() * array.length)];
+};
