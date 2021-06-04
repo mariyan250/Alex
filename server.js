@@ -17,7 +17,7 @@ bot.on('message', async (event, chat) => {
     let query = event.message.text.toLowerCase().split('какво е')[1];
 
     if (query.includes('?')) {
-      query.pop();
+      query.splice(query.indexOf('?'), 1);
     }
 
     console.log(query);
