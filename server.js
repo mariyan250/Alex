@@ -13,7 +13,7 @@ const bot = new Bot({
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
 
-  if (text.includes('Kакво е')) {
+  if (text.includes('какво е') || text.includes('Какво е')) {
     const query = event.message.text.toLowerCase().split('какво е')[1];
 
     try {
