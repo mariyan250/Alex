@@ -16,12 +16,14 @@ bot.on('message', async (event, chat) => {
   if (text.includes('какво е') || text.includes('Какво е')) {
     const query = event.message.text.toLowerCase().split('какво е')[1];
     try {
+      await wiki.setLang('bg');
       const data = await wiki.page(query);
       const summary = await data.summary();
       await chat.sendMessage(summary.extract);
     } catch (error) {
       console.log(error);
     }
+    return;
   }
 
   if (checkWord(dictionary.greetings, text)) {
