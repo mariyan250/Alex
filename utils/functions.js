@@ -5,5 +5,5 @@ export const checkWord = (dictionary, sentence) => {
 };
 
 export const getRandom = (array) => {
-  array[Math.floor(Math.random() * array.length)];
+  return array[Math.floor(Math.random() * array.length)];
 };
