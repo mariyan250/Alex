@@ -22,8 +22,6 @@ bot.on('message', async (event, chat) => {
 
     query = query.join('');
 
-    console.log(query);
-
     try {
       await wiki.setLang('bg');
       const data = await wiki.page(query, { autoSuggest: true });
