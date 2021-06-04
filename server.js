@@ -2,6 +2,7 @@ import { Bot } from './lib/Bot.js';
 import { YouTube } from 'youtube-sr';
 import { checkWord, getRandom } from './utils/functions.js';
 import { dictionary } from './dictionary.js';
+import { getWikipedia } from './services/wikipedia';
 
 const bot = new Bot({
   VERIFY_TOKEN: process.env.VERIFY_TOKEN,
@@ -11,6 +12,11 @@ const bot = new Bot({
 // Message from messenger
 bot.on('message', async (event, chat) => {
   const { text } = event.message;
+
+  if (text.includes('какво е')) {
+    const phrase = text.split('какво е')[1];
+    console.log(await getWikipedia(phrase));
+  }
 
   if (checkWord(dictionary.greetings, text)) {
     try {
