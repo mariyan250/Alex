@@ -16,6 +16,8 @@ bot.on('message', async (event, chat) => {
   if (text.includes('какво е') || text.includes('Какво е')) {
     const query = event.message.text.toLowerCase().split('какво е')[1];
 
+    console.log(query);
+
     try {
       const data = await wiki.page(query);
       console.log(await data.summary().extract);
