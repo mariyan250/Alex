@@ -14,8 +14,6 @@ bot.on('message', async (event, chat) => {
 
   if (checkWord(dictionary.greetings, text)) {
     try {
-      await chat.sendAction('mark_seen');
-      await chat.sendAction('typing_on');
       await chat.sendMessage(getRandom(['Здравей! 🙋‍♂️', 'Хей! 👋']));
     } catch (error) {
       console.log(error);
