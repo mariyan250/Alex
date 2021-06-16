@@ -88,7 +88,6 @@ bot.on('message', async (event, chat) => {
       } catch (error) {
         console.log(error);
       }
-
       break;
   }
 });
