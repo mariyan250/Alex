@@ -104,12 +104,10 @@ bot.on('app-message', (text) => {
     case 'музика':
     case 'пусни музика':
       io.emit('video controls', 'start');
-      await chat.sendMessage('Режим "Музика" активиран!');
       break;
 
     case 'спри музиката':
       io.emit('video controls', 'stop music');
-      await chat.sendMessage('Режим "Музика" деактивиран!');
       break;
 
     case 'пусни':
