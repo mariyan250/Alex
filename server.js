@@ -92,9 +92,7 @@ bot.on('message', async (event, chat) => {
   }
 });
 
-bot.on('app-message', async (event, chat) => {
-  const { text } = event.message;
-  
+bot.on('app-message', (text) => {
   console.log(`App message: ${text}`);
 
   if (dictionary.music.volume.includes(text)) {
