@@ -91,3 +91,60 @@ bot.on('message', async (event, chat) => {
       break;
   }
 });
+
+bot.on('app-message', async (event, chat) => {
+  const { text } = event.message;
+  
+  console.log(`App message: ${text}`);
+
+  if (dictionary.music.volume.includes(text)) {
+    io.emit('video volume', Number(text));
+    return;
+  }
+
+  switch (text.toLowerCase()) {
+    case 'музика':
+    case 'пусни музика':
+      io.emit('video controls', 'start');
+      await chat.sendMessage('Режим "Музика" активиран!');
+      break;
+
+    case 'спри музиката':
+      io.emit('video controls', 'stop music');
+      await chat.sendMessage('Режим "Музика" деактивиран!');
+      break;
+
+    case 'пусни':
+      io.emit('video controls', 'play');
+      break;
+
+    case 'спри':
+    case 'стоп':
+    case 'пауза':
+      io.emit('video controls', 'stop');
+      break;
+
+    case 'покажи':
+      io.emit('video controls', 'show');
+      io.emit('display controls', 'hide');
+      break;
+
+    case 'скрий':
+      io.emit('video controls', 'hide');
+      io.emit('display controls', 'show');
+      break;
+
+    default:
+      const music = text.toLowerCase();
+
+      try {
+        const data = await YouTube.search(music, { limit: 1 });
+        io.emit('video controls', 'start');
+        io.emit('video controls', 'show');
+        io.emit('youtube link', data[0].id);
+      } catch (error) {
+        console.log(error);
+      }
+      break;
+  }
+});
